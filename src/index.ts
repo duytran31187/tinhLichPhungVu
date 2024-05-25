@@ -17,7 +17,7 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
         thirdSundayOfLent: addDate(ashWednesday, 18),
         fourthSundayOfLent: addDate(ashWednesday, 25),
         fifthSundayOfLent: addDate(ashWednesday, 32),
-        palmSunday: addDate(ashWednesday, 40),
+        palmSunday: addDate(ashWednesday, 39),
         easterSunday: easter,
         secondSundayOfEaster: addDate(easter, 7),
         thirdSundayOfEaster: addDate(easter, 14),
