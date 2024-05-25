@@ -62,7 +62,7 @@ const timChuaNhatGanNhatTuNgay = (d: Date): Date => {
 export const tinhNgayPhucSinh = (year: number) => {// tim ngay chua nhat gan nhat SAU ngay ram
     const simpleDateParam: simpleDate = tinhngayramsau21thang3(year);
     let closestSunday = new Date(simpleDateParam.year + '-' + simpleDateParam.month + '-' + simpleDateParam.day);
-    closestSunday.setDate(closestSunday.getDate() + 1);
+    closestSunday.setDate(closestSunday.getDate());
     return timChuaNhatGanNhatTuNgay(closestSunday);
 }
 export function tinhLeChuaHienLinh(y: number) {
