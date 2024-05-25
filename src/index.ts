@@ -1,17 +1,16 @@
 import { NamPhungVu } from "./commonData";
-import { tinh4TuanMuaVong } from "./tinh4TuanMuaVong";
+import { tinh4TuanMuaVong, tinhNamABC } from "./tinh4TuanMuaVong";
 import { tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh } from "./tinhlephucsinh";
 import { addDate, getChristmasDay } from "./utils";
 
 export function tinhNamPhungVu(y: number): NamPhungVu {
     const tuanmuaVong = tinh4TuanMuaVong(y);
-    const year = tuanmuaVong.yearABC;
     const easter = tinhNgayPhucSinh(y);
     const ashWednesday = tinhThuTuLeTro(easter);
     return {
         year: y,
-        yearABC: year,
-        oddEven: y % 2 == 0 ? 'Even' : 'Odd',
+        yearABC: tinhNamABC(y),
+        oddEven: y % 2 == 0 ? 'Even ( Năm chẵn)' : 'Odd (Năm lẻ)',
         ashWed: ashWednesday,
         firstSundayOfLent: addDate(ashWednesday, 4),
         secondSundayOfLent: addDate(ashWednesday, 11),

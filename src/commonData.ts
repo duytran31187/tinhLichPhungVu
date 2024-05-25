@@ -2,8 +2,7 @@ export type MuaphungSinh = {
     week1: Date,
     week2: Date,
     week3: Date,
-    week4: Date,
-    yearABC: string
+    week4: Date
 }
 export type simpleDate  = {
     year: number,
