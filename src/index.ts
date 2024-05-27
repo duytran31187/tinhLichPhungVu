@@ -1,6 +1,6 @@
 import { NamPhungVu } from "./commonData";
 import { tinh4TuanMuaVong, tinhNamABC } from "./tinh4TuanMuaVong";
-import { tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh } from "./tinhlephucsinh";
+import { tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh, tinhLeThanhGia, tinhLeChuaChiuPhepRua } from "./tinhlephucsinh";
 import { addDate, getChristmasDay } from "./utils";
 
 export function tinhNamPhungVu(y: number): NamPhungVu {
@@ -31,6 +31,8 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
         thirdSundayOfAdvent: tuanmuaVong.week3,
         fourthSundayOfAdvent: tuanmuaVong.week4,
         christmas: getChristmasDay(y),
+        leThanhGia: tinhLeThanhGia(y),
         theEpiphanyOfTheLord: tinhLeChuaHienLinh(y),
+        leChuaChiuPhepRua: tinhLeChuaChiuPhepRua(y)
     }
 }

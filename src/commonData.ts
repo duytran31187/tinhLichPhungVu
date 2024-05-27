@@ -33,6 +33,8 @@ export type NamPhungVu = {
     thirdSundayOfAdvent: Date,
     fourthSundayOfAdvent: Date,
     christmas: Date,
+    leThanhGia: Date,
     theEpiphanyOfTheLord: Date,
+    leChuaChiuPhepRua: Date
   }
   
