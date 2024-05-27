@@ -11,6 +11,8 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
         year: y,
         yearABC: tinhNamABC(y),
         oddEven: y % 2 == 0 ? 'Even ( Năm chẵn)' : 'Odd (Năm lẻ)',
+        theEpiphanyOfTheLord: tinhLeChuaHienLinh(y),
+        leChuaChiuPhepRua: tinhLeChuaChiuPhepRua(y),
         ashWed: ashWednesday,
         firstSundayOfLent: addDate(ashWednesday, 4),
         secondSundayOfLent: addDate(ashWednesday, 11),
@@ -31,8 +33,6 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
         thirdSundayOfAdvent: tuanmuaVong.week3,
         fourthSundayOfAdvent: tuanmuaVong.week4,
         christmas: getChristmasDay(y),
-        leThanhGia: tinhLeThanhGia(y),
-        theEpiphanyOfTheLord: tinhLeChuaHienLinh(y),
-        leChuaChiuPhepRua: tinhLeChuaChiuPhepRua(y)
+        leThanhGia: tinhLeThanhGia(y)
     }
 }
