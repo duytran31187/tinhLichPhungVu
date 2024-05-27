@@ -7,6 +7,12 @@ export const nameOfDays = {
     yearABC: 'A|B|C (năm A|B|C)',
     oddEven: 'Odd|Even (Năm chẵn lẻ)',
     theEpiphanyOfTheLord: 'The Epiphany of the Lord (Lễ Chúa Hiển Linh)',
+    chuaNhatThu1ThuongNien: 'Chua Nhat thuong nien 1',
+    chuaNhatThu2ThuongNien: 'Chua Nhat thuong nien 2',
+    chuaNhatThu3ThuongNien: 'Chua Nhat thuong nien 3',
+    chuaNhatThu4ThuongNien: 'Chua Nhat thuong nien 4',
+    chuaNhatThu5ThuongNien: 'Chua Nhat thuong nien 5',
+    chuaNhatThu6ThuongNien: 'Chua Nhat thuong nien 6',
     leChuaChiuPhepRua: 'Lễ Chúa chịu phép rửa',
     ashWed: 'Ash Wednesday (Thứ tư lễ tro)',
     firstSundayOfLent: 'First Sunday of Lent (Chúa nhật thứ nhất mùa chay)',
@@ -35,11 +41,17 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
     const tuanmuaVong = tinh4TuanMuaVong(y);
     const easter = tinhNgayPhucSinh(y);
     const ashWednesday = tinhThuTuLeTro(easter);
+    const chuaHienLinh = tinhLeChuaHienLinh(y);
     return {
         year: y,
         yearABC: tinhNamABC(y),
         oddEven: y % 2 == 0 ? 'Even ( Năm chẵn)' : 'Odd (Năm lẻ)',
-        theEpiphanyOfTheLord: tinhLeChuaHienLinh(y),
+        theEpiphanyOfTheLord: chuaHienLinh,
+        chuaNhatThu2ThuongNien: addDate(chuaHienLinh,7),
+        chuaNhatThu3ThuongNien: addDate(chuaHienLinh,14),
+        chuaNhatThu4ThuongNien: addDate(chuaHienLinh,21),
+        chuaNhatThu5ThuongNien: addDate(chuaHienLinh,28),
+        chuaNhatThu6ThuongNien: addDate(chuaHienLinh,35),
         leChuaChiuPhepRua: tinhLeChuaChiuPhepRua(y),
         ashWed: ashWednesday,
         firstSundayOfLent: addDate(ashWednesday, 4),
