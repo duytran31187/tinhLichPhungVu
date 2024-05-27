@@ -6,7 +6,7 @@ import { addDate } from './utils';
 // chuyen doi ngay duong sang ngay âm
 
 
-const tinhngayramsau21thang3 = (y: number): simpleDate => {
+export const tinhngayramsau21thang3 = (y: number): simpleDate => {
     // tim ngay rằm
     let ngayRamFound = false;
     let count = 0;
@@ -59,15 +59,37 @@ const timChuaNhatGanNhatTuNgay = (d: Date): Date => {
     } while (!sundayFound)
     return closestSunday;
 }
-export const tinhNgayPhucSinh = (year: number) => {// tim ngay chua nhat gan nhat SAU ngay ram
+export const tinhNgayPhucSinh = (year: number): Date => {// tim ngay chua nhat gan nhat SAU ngay ram
     const simpleDateParam: simpleDate = tinhngayramsau21thang3(year);
     let closestSunday = new Date(simpleDateParam.year + '-' + simpleDateParam.month + '-' + simpleDateParam.day);
     closestSunday.setDate(closestSunday.getDate());
     return timChuaNhatGanNhatTuNgay(closestSunday);
 }
-export function tinhLeChuaHienLinh(y: number) {
+export function tinhLeChuaHienLinh(y: number): Date {
     const christmasDate = getChristmasDay(y);
     const chuaNhatSauGiangsinh = timChuaNhatGanNhatTuNgay(christmasDate);
     chuaNhatSauGiangsinh.setDate(chuaNhatSauGiangsinh.getDate())
     return addDate(chuaNhatSauGiangsinh, 7);
+}
+
+export function tinhLeThanhGia(y: number): Date {
+// the Octave (Bát Nhật Giáng Sinh) 25-1/1
+// Lễ Thánh Gia: chọn ngày CN trong tuần Bát Nhật Giáng Sinh, nếu không có ngày CN, thì chọn ngày 30/12
+ const christMas = getChristmasDay(y);
+ let count = 1;
+ let breakTheLoop = false;
+ let foundDate = new Date(y + '-12-30');
+ console.log(y);
+ do {
+    let octaveDay = addDate(christMas, count); // ngay thu 2 tuan bat nhat la 26, ngay 7: 1/1 => ignore
+    if (octaveDay.getDay() == 0) {
+        breakTheLoop = true;
+        foundDate = cloneDate(octaveDay);
+    }
+    count++;
+    if (count > 6) { // khoong tinh ngay 1/1
+        breakTheLoop = true
+    }
+  } while (!breakTheLoop)
+  return foundDate;
 }

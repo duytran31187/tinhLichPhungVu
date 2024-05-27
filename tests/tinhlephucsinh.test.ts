@@ -1,9 +1,5 @@
-import { tinhNgayPhucSinh } from "../src/tinhlephucsinh";
-// const testNgayPhucSinh = () => { // return list correct easter days
-	
-// 	return correctDates[y];
-// }
-test('test phuc sinh', () => {
+import { tinhNgayPhucSinh, tinhLeThanhGia } from "../src/tinhlephucsinh";
+test('tinhNgayPhucSinh', () => {
     const correctDates = [];
 	correctDates[2022] = 'April 17, 2022';
 	correctDates[2023] = 'April 9, 2023';
@@ -19,9 +15,24 @@ test('test phuc sinh', () => {
 	correctDates[2033] = 'April 17, 2033';
 	correctDates[2034] = 'April 9, 2034';
     correctDates.forEach((expectedDateStr, year) => {
-        console.log(`${year} ${expectedDateStr}`);
         const expectedDate = new Date(expectedDateStr);
-        expect(tinhNgayPhucSinh(year).toDateString()).toEqual(expectedDate.toDateString());
+		const actual = tinhNgayPhucSinh(year);
+        expect(actual.toDateString()).toEqual(expectedDate.toDateString());
     })
     
+});
+
+test('tinhLeThanhGia', () => {
+	const correctDates = [];
+	correctDates[2020] = 'December 27, 2020';
+	correctDates[2021] = 'December 26, 2021';
+	correctDates[2022] = 'December 30, 2022';
+	correctDates[2023] = 'December 31, 2023';
+	correctDates[2024] = 'December 29, 2024';
+	correctDates[2025] = 'December 28, 2025';
+	correctDates.forEach((expectedDateStr, year) => {
+        const expectedDate = new Date(expectedDateStr);
+		const actual = tinhLeThanhGia(year);
+        expect(actual.toDateString()).toEqual(expectedDate.toDateString());
+    })
 });
