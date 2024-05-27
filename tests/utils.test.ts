@@ -1,4 +1,4 @@
-import { addDate, cloneDate, getChristmasDay } from "../src/utils";
+import { addDate, cloneDate, getChristmasDay, timNgayTrongTuanSauNgay } from "../src/utils";
 
 test('cloneDate', () => {
     const date1 = new Date('2025-12-01');
@@ -17,4 +17,18 @@ test('addDate', () => {
     expect(addDate(chirstmas2024, 5).getTime()).toEqual(new Date('2024-12-30').getTime());
     expect(addDate(chirstmas2024, 6).getTime()).toEqual(new Date('2024-12-31').getTime());
     expect(addDate(chirstmas2024, 7).getTime()).toEqual(new Date('2025-01-01').getTime());
+});
+test('timNgayTrongTuanSauNgay', () => {
+    expect(
+        timNgayTrongTuanSauNgay(
+            new Date('2024-05-27'),
+            0
+        ).getTime()
+    ).toStrictEqual(new Date('2024-06-02').getTime()); // next sunday
+    expect(
+        timNgayTrongTuanSauNgay(
+            new Date('2024-05-27'),
+            1
+        ).getTime()
+    ).toStrictEqual(new Date('2024-06-03').getTime()); // next monday
 });
