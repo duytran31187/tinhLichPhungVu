@@ -31,15 +31,8 @@ export function timNgayTrongTuanSauNgay(d: Date, dayOfWeek: number): Date {
     return resultDay!;    
 }
 export const timChuaNhatGanNhatTuNgay = (d: Date): Date => {
-    // chua nhat gan nhat sau ngay d, có thể là ngày d
-    let sundayFound = false;
-    let closestSunday = cloneDate(d);
-    do {
-        if (closestSunday.getDay() === 0) { //sunday
-            sundayFound = true;
-            break;
-        }
-        closestSunday.setDate(closestSunday.getDate() + 1);
-    } while (!sundayFound)
-    return closestSunday;
+    // chua nhat gan nhat sau ngay d, có thể là ngày d => do do subDay 1
+    // let sundayFound = false;
+    d.setDate(d.getDate() - 1);
+    return timNgayTrongTuanSauNgay(d, 0);
 }

@@ -38,14 +38,12 @@ export const tinhngayramsau21thang3 = (y: number): simpleDate => {
     };
 };
 export function tinhThuTuLeTro(ngayLePhucSinh: Date) {
-    const thutuLeTro = cloneDate(ngayLePhucSinh);
-    thutuLeTro.setDate(thutuLeTro.getDate() - 46);
-    return thutuLeTro;
+    ngayLePhucSinh.setDate(ngayLePhucSinh.getDate() - 46);
+    return ngayLePhucSinh;
 }
 export const tinhNgayPhucSinh = (year: number): Date => {// tim ngay chua nhat gan nhat SAU ngay ram
     const simpleDateParam: simpleDate = tinhngayramsau21thang3(year);
     let closestSunday = new Date(simpleDateParam.year + '-' + simpleDateParam.month + '-' + simpleDateParam.day);
-    closestSunday.setDate(closestSunday.getDate());
     return timChuaNhatGanNhatTuNgay(closestSunday);
 }
 export function tinhLeChuaHienLinh(y: number): Date {
@@ -79,7 +77,7 @@ export function tinhLeThanhGia(y: number): Date {
         let octaveDay = addDate(christMas, count); // ngay thu 2 tuan bat nhat la 26, ngay 7: 1/1 => ignore
         if (octaveDay.getDay() == 0) {
             breakTheLoop = true;
-            foundDate = cloneDate(octaveDay);
+            foundDate = octaveDay;
         }
         count++;
         if (count > 6) { // khoong tinh ngay 1/1
@@ -107,9 +105,8 @@ export function tinhLeChuaChiuPhepRua(y: number): Date {
 }
 export const tinhLeChuaKiToVua = (chuaNhatThuNhatMuaVong: Date): Date => {
     //Lễ Kitô Vua là Chúa Nhật gần với Chúa Nhật I Mùa Vọng
-    const ngayLe = cloneDate(chuaNhatThuNhatMuaVong);
-    ngayLe.setDate(ngayLe.getDate() - 7);
-    return ngayLe;
+    chuaNhatThuNhatMuaVong.setDate(chuaNhatThuNhatMuaVong.getDate() - 7);
+    return chuaNhatThuNhatMuaVong;
 }
 export const tinhLeChuaThanhThanHienxuong = (easter: Date): Date => {
     return addDate(easter, 49);
@@ -130,7 +127,7 @@ export const tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = (leKiToV
             count++;
         }
     } while (!found);
-    return count; //
+    return count;
 }
 
 export function tinhNamABC(y: number): string {
@@ -155,8 +152,6 @@ export function tinhNamABC(y: number): string {
 }
 export function tinh4TuanMuaVong(y: number): MuaphungSinh {
     let chrismastDate = getChristmasDay(y);
-    // console.log(`vong giang sinh: %s`, chrismastDate.toDateString());
-    // tuan thu 4 mua vong5
     let sundayFound = false;
     let count = 0;
     let finalResult: MuaphungSinh;

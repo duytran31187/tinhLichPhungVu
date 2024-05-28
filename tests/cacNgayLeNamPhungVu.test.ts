@@ -82,20 +82,22 @@ test('tinhLeChuaChiuPhepRua', () => {
     })
 });
 
-test('tinhThuTuLeTro', () => {
-	const correctDates = [];
-	correctDates[2022] = 'March 2, 2022';
-	correctDates[2023] = 'February 22, 2023';
-	correctDates[2024] = 'February 14, 2024';
-	correctDates[2025] = 'March 5, 2025';
-	correctDates[2026] = 'February 18, 2026';
-	correctDates[2027] = 'February 10, 2027';
-	correctDates[2028] = 'March 1, 2028';
-	correctDates.forEach((expectedDateStr, year) => {
-        const expectedDate = new Date(expectedDateStr);
-		const actual = tinhThuTuLeTro(tinhNgayPhucSinh(year));
-        expect(actual.toDateString()).toStrictEqual(expectedDate.toDateString());
-    })
+describe('tinhThuTuLeTro', () => {
+	it('kiem tra cac nam', () => {
+		const correctDates = [];
+		correctDates[2022] = 'March 2, 2022';
+		correctDates[2023] = 'February 22, 2023';
+		correctDates[2024] = 'February 14, 2024';
+		correctDates[2025] = 'March 5, 2025';
+		correctDates[2026] = 'February 18, 2026';
+		correctDates[2027] = 'February 10, 2027';
+		correctDates[2028] = 'March 1, 2028';
+		correctDates.forEach((expectedDateStr, year) => {
+			const expectedDate = new Date(expectedDateStr);
+			const actual = tinhThuTuLeTro(tinhNgayPhucSinh(year));
+			expect(actual.toDateString()).toStrictEqual(expectedDate.toDateString());
+		})
+	})
 });
 describe('tinh4TuanMuaVong', () => {
 	it('2024', () => {
