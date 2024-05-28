@@ -1,7 +1,6 @@
 import { NamPhungVu } from "./commonData";
-import { tinh4TuanMuaVong, tinhNamABC } from "./tinh4TuanMuaVong";
-import { tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh, tinhLeThanhGia, tinhLeChuaChiuPhepRua } from "./tinhlephucsinh";
-import { addDate, cloneDate, getChristmasDay } from "./utils";
+import { tinh4TuanMuaVong, tinhNamABC, tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh, tinhLeThanhGia, tinhLeChuaChiuPhepRua, tinhLeChuaKiToVua, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong} from "./tinhlephucsinh";
+import { addDate, getChristmasDay } from "./utils";
 export const nameOfDays = {
     year: 'year( Năm)',
     yearABC: 'A|B|C (năm A|B|C)',
@@ -32,31 +31,6 @@ export const nameOfDays = {
     chuaKitoVua: 'Lễ Chúa KiTo Vua',
     firstOrdinarySundayAfterPentecostSunday: 'Chua Nhat Thuong Nien sau Le Chua Thanh than hien xuong'
 };
-export const tinhLeChuaKiToVua = (chuaNhatThuNhatMuaVong: Date): Date => {
-    //Lễ Kitô Vua là Chúa Nhật gần với Chúa Nhật I Mùa Vọng
-    const ngayLe = cloneDate(chuaNhatThuNhatMuaVong);
-    ngayLe.setDate(ngayLe.getDate() - 7);
-    return ngayLe;
-}
-
-export const tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = (leKiToVua: Date, leChuatthienxuong: Date): number => {
-    // leKiToVua la tuan 34
-    let count = 33;
-    let found = false;
-    leKiToVua.setHours(10); // make sure same hour just date is diff
-    leChuatthienxuong.setHours(10);  // make sure same hour just date is diff
-    do {
-        let sunday34 = cloneDate(leKiToVua); // la tuan 34
-        sunday34.setDate(sunday34.getDate() - ((34-count)*7));
-        console.log(`${count} --- ${sunday34.toDateString()}`);
-        count--;
-        if (sunday34.getTime() <= leChuatthienxuong.getTime()) {
-            found = true;
-        }
-    } while (!found);
-    return count+2; //
-}
-
 export function tinhNamPhungVu(y: number): NamPhungVu {
     const tuanmuaVong = tinh4TuanMuaVong(y);
     const easter = tinhNgayPhucSinh(y);
@@ -99,7 +73,7 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
         leThanhGia: tinhLeThanhGia(y)
     }
 }
-const namphungVuIns = tinhNamPhungVu(2025);
+// const namphungVuIns = tinhNamPhungVu(2025);
 // for( let key in namphungVuIns) 
 // {
 //     const val = namphungVuIns[key] instanceof Date ? namphungVuIns[key].toDateString() : namphungVuIns[key];
