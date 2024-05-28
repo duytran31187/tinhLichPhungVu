@@ -179,3 +179,24 @@ export function tinh4TuanMuaVong(y: number): MuaphungSinh {
     } while (!sundayFound);
     return finalResult!;
 };
+export const firstSundayOfLent = (ashWednesday: Date): Date => {
+    return  addDate(ashWednesday, 4);
+}
+export const secondSundayOfLent = (ashWednesday: Date): Date => {
+    return  addDate(ashWednesday, 11);
+}
+export const thirdSundayOfLent = (ashWednesday: Date): Date => {
+    return  addDate(ashWednesday, 18);
+}
+export const fourthSundayOfLent = (ashWednesday: Date): Date => {
+    return  addDate(ashWednesday, 25);
+}
+export const fifthSundayOfLent = (ashWednesday: Date): Date => {
+    return  addDate(ashWednesday, 32);
+}
+export const calculateTheAscentionOfTheLord = (easter: Date): Date => {
+    return  addDate(easter, 42);
+}
+export const palmSunday = (ashWednesday: Date): Date => {
+    return  addDate(ashWednesday, 39);
+}

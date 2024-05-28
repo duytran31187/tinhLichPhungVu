@@ -8,7 +8,14 @@ import {
 	tinhLeChuaKiToVua,
 	tinhNamABC,
 	tinhLeChuaThanhThanHienxuong,
-	tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong
+	tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong,
+	calculateTheAscentionOfTheLord,
+	palmSunday,
+	fifthSundayOfLent,
+	fourthSundayOfLent,
+	thirdSundayOfLent,
+	secondSundayOfLent,
+	firstSundayOfLent
 } from "../src/cacNgayLeNamPhungVu";
 test('tinhNgayPhucSinh', () => {
     const correctDates = [];
@@ -219,3 +226,51 @@ describe('tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong', () => {
 		)).toBe(10);
 	});
 });
+describe('calculateTheAscentionOfTheLord', () => {
+	it('2024', () => {
+		const easter = tinhNgayPhucSinh(2024);
+		expect(calculateTheAscentionOfTheLord(easter).toDateString()).toStrictEqual((new Date('2024-05-12')).toDateString());
+	});
+})
+describe('firstSundayOfLent', () => {
+	it('2024', () => {
+		const easter = tinhNgayPhucSinh(2024);
+		const ashWed = tinhThuTuLeTro(easter);
+		expect(firstSundayOfLent(ashWed).toDateString()).toStrictEqual((new Date('2024-02-18')).toDateString());
+	});
+})
+describe('secondSundayOfLent', () => {
+	it('2024', () => {
+		const easter = tinhNgayPhucSinh(2024);
+		const ashWed = tinhThuTuLeTro(easter);
+		expect(secondSundayOfLent(ashWed).toDateString()).toStrictEqual((new Date('2024-02-25')).toDateString());
+	});
+})
+describe('thirdSundayOfLent', () => {
+	it('2024', () => {
+		const easter = tinhNgayPhucSinh(2024);
+		const ashWed = tinhThuTuLeTro(easter);
+		expect(thirdSundayOfLent(ashWed).toDateString()).toStrictEqual((new Date('2024-03-03')).toDateString());
+	});
+})
+describe('fourthSundayOfLent', () => {
+	it('2024', () => {
+		const easter = tinhNgayPhucSinh(2024);
+		const ashWed = tinhThuTuLeTro(easter);
+		expect(fourthSundayOfLent(ashWed).toDateString()).toStrictEqual((new Date('2024-03-10')).toDateString());
+	});
+})
+describe('fifthSundayOfLent', () => {
+	it('2024', () => {
+		const easter = tinhNgayPhucSinh(2024);
+		const ashWed = tinhThuTuLeTro(easter);
+		expect(fifthSundayOfLent(ashWed).toDateString()).toStrictEqual((new Date('2024-03-17')).toDateString());
+	});
+})
+describe('palmSunday', () => {
+	it('2024', () => {
+		const easter = tinhNgayPhucSinh(2024);
+		const ashWed = tinhThuTuLeTro(easter);
+		expect(palmSunday(ashWed).toDateString()).toStrictEqual((new Date('2024-03-24')).toDateString());
+	});
+})

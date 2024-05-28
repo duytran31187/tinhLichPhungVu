@@ -1,5 +1,5 @@
 import { NamPhungVu } from "./commonData";
-import { tinhLeChuaThanhThanHienxuong, tinh4TuanMuaVong, tinhNamABC, tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh, tinhLeThanhGia, tinhLeChuaChiuPhepRua, tinhLeChuaKiToVua, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong} from "./cacNgayLeNamPhungVu";
+import { tinhLeChuaThanhThanHienxuong, tinh4TuanMuaVong, tinhNamABC, tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh, tinhLeThanhGia, tinhLeChuaChiuPhepRua, tinhLeChuaKiToVua, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong, firstSundayOfLent, secondSundayOfLent, thirdSundayOfLent, palmSunday, fifthSundayOfLent, fourthSundayOfLent, calculateTheAscentionOfTheLord} from "./cacNgayLeNamPhungVu";
 import { addDate, getChristmasDay } from "./utils";
 export const nameOfDays = {
     year: 'year( Năm)',
@@ -50,19 +50,19 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
         firstOrdinarySundayAfterPentecostSunday: chuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong,
         leChuaChiuPhepRua: tinhLeChuaChiuPhepRua(y),
         ashWed: ashWednesday,
-        firstSundayOfLent: addDate(ashWednesday, 4),
-        secondSundayOfLent: addDate(ashWednesday, 11),
-        thirdSundayOfLent: addDate(ashWednesday, 18),
-        fourthSundayOfLent: addDate(ashWednesday, 25),
-        fifthSundayOfLent: addDate(ashWednesday, 32),
-        palmSunday: addDate(ashWednesday, 39),
+        firstSundayOfLent: firstSundayOfLent(ashWednesday),
+        secondSundayOfLent: secondSundayOfLent(ashWednesday),
+        thirdSundayOfLent: thirdSundayOfLent(ashWednesday),
+        fourthSundayOfLent: fourthSundayOfLent(ashWednesday),
+        fifthSundayOfLent: fifthSundayOfLent(ashWednesday),
+        palmSunday: palmSunday(ashWednesday),
         easterSunday: easter,
         secondSundayOfEaster: addDate(easter, 7),
         thirdSundayOfEaster: addDate(easter, 14),
         fourthSundayOfEaster: addDate(easter, 21),
         fifthSundayOfEaster: addDate(easter, 28),
         sixthSundayOfEaster: addDate(easter, 35),
-        theAscentionOfTheLord: addDate(easter, 42),
+        theAscentionOfTheLord: calculateTheAscentionOfTheLord(easter),
         pentecostSunday: pentecostSunday,
         chuaKitoVua: leChuaKiToVua,
         firstSundayOfAdvent: tuanmuaVong.week1,
