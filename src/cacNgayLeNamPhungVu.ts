@@ -118,6 +118,13 @@ export const tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = (leKiToV
     let found = false;
     const chuaNhatThuongNienDauTienMua2 = cloneDate(leChuatthienxuong);
     chuaNhatThuongNienDauTienMua2.setDate(chuaNhatThuongNienDauTienMua2.getDate() + 7);
+    if (
+        leChuatthienxuong.getDay() != 0
+        || leKiToVua.getDay() != 0
+    ) {
+        console.error('invalid params');
+        return 100;
+    }
     do {
         let sunday34 = cloneDate(leKiToVua); // la tuan 34
         sunday34.setDate(sunday34.getDate() - ((34 - count) * 7));

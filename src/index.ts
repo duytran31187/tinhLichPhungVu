@@ -1,6 +1,6 @@
 import { NamPhungVu } from "./commonData";
 import { tinhLeChuaThanhThanHienxuong, tinh4TuanMuaVong, tinhNamABC, tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh, tinhLeThanhGia, tinhLeChuaChiuPhepRua, tinhLeChuaKiToVua, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong, firstSundayOfLent, secondSundayOfLent, thirdSundayOfLent, palmSunday, fifthSundayOfLent, fourthSundayOfLent, calculateTheAscentionOfTheLord} from "./cacNgayLeNamPhungVu";
-import { addDate, getChristmasDay } from "./utils";
+import { addDate, cloneDate, getChristmasDay } from "./utils";
 export const nameOfDays = {
     year: 'year( Năm)',
     yearABC: 'A|B|C (năm A|B|C)',
@@ -34,10 +34,10 @@ export const nameOfDays = {
 export function tinhNamPhungVu(y: number): NamPhungVu {
     const tuanmuaVong = tinh4TuanMuaVong(y);
     const easter = tinhNgayPhucSinh(y);
-    const ashWednesday = tinhThuTuLeTro(easter);
+    const ashWednesday = tinhThuTuLeTro(cloneDate(easter));
     const chuaHienLinh = tinhLeChuaHienLinh(y);
     const leChuaKiToVua = tinhLeChuaKiToVua(tuanmuaVong.week1);
-    const pentecostSunday = tinhLeChuaThanhThanHienxuong(easter);
+    const pentecostSunday = tinhLeChuaThanhThanHienxuong(cloneDate(easter));
     const chuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong(
         leChuaKiToVua,
         pentecostSunday
@@ -74,6 +74,7 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
     }
 }
 // const namphungVuIns = tinhNamPhungVu(2025);
+// console.log(namphungVuIns);
 // for( let key in namphungVuIns) 
 // {
 //     const val = namphungVuIns[key] instanceof Date ? namphungVuIns[key].toDateString() : namphungVuIns[key];
