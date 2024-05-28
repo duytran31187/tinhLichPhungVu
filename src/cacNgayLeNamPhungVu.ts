@@ -124,7 +124,6 @@ export const tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = (leKiToV
     do {
         let sunday34 = cloneDate(leKiToVua); // la tuan 34
         sunday34.setDate(sunday34.getDate() - ((34 - count) * 7));
-        console.log(`${count} --- ${sunday34.toDateString()}`);
         count--;
         if (sunday34.toDateString() == chuaNhatThuongNienDauTienMua2.toDateString()) {
             found = true;
