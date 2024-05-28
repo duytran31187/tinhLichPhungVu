@@ -104,7 +104,13 @@ describe('tinhThuTuLeTro', () => {
 			const actual = tinhThuTuLeTro(tinhNgayPhucSinh(year));
 			expect(actual.toDateString()).toStrictEqual(expectedDate.toDateString());
 		})
-	})
+	});
+	it('test multiple calls', () => {
+		const easter = tinhNgayPhucSinh(2024);
+		expect(tinhThuTuLeTro(easter).toDateString()).toStrictEqual((new Date('February 14, 2024')).toDateString());
+		expect(tinhThuTuLeTro(easter).toDateString()).toStrictEqual((new Date('February 14, 2024')).toDateString());
+		expect(tinhThuTuLeTro(easter).toDateString()).toStrictEqual((new Date('February 14, 2024')).toDateString());
+	});
 });
 describe('tinh4TuanMuaVong', () => {
 	it('2024', () => {
@@ -183,6 +189,43 @@ test('tinhNamABC', () => {
 	expect(tinhNamABC(2024)).toBe('B');
 	expect(tinhNamABC(2025)).toBe('C');
 	expect(tinhNamABC(2026)).toBe('A');
+});
+describe('tinhLeChuaThanhThanHienxuong', () => {
+	it('2024', () => {
+		const easter = tinhNgayPhucSinh(2024);
+		const expectedDate = new Date('2024-05-19');
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString());
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString());
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString());
+	});
+	it('2025', () => {
+		const easter = tinhNgayPhucSinh(2025);
+		const expectedDate = new Date('2025-06-08');
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString());
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString());
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString());
+	});
+	it('2026', () => {
+		const easter = tinhNgayPhucSinh(2026);
+		const expectedDate = new Date('2026-05-24');
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString());
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString()); // call multi to make sure the value not changed
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString());
+	});
+	it('2027', () => {
+		const easter = tinhNgayPhucSinh(2027);
+		const expectedDate = new Date('2027-05-16');
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString());
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString()); // call multi to make sure the value not changed
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString());
+	});
+	it('2028', () => {
+		const easter = tinhNgayPhucSinh(2028);
+		const expectedDate = new Date('2028-06-04');
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString());
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString()); // call multi to make sure the value not changed
+		expect((tinhLeChuaThanhThanHienxuong(easter)).toDateString()).toStrictEqual(expectedDate.toDateString());
+	});
 });
 describe('tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong', () => {
 	it('2024', () => {

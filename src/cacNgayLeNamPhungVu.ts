@@ -38,8 +38,9 @@ export const tinhngayramsau21thang3 = (y: number): simpleDate => {
     };
 };
 export function tinhThuTuLeTro(ngayLePhucSinh: Date) {
-    ngayLePhucSinh.setDate(ngayLePhucSinh.getDate() - 46);
-    return ngayLePhucSinh;
+    const d = cloneDate(ngayLePhucSinh);
+    d.setDate(d.getDate() - 46);
+    return d;
 }
 export const tinhNgayPhucSinh = (year: number): Date => {// tim ngay chua nhat gan nhat SAU ngay ram
     const simpleDateParam: simpleDate = tinhngayramsau21thang3(year);
@@ -109,7 +110,8 @@ export const tinhLeChuaKiToVua = (chuaNhatThuNhatMuaVong: Date): Date => {
     return chuaNhatThuNhatMuaVong;
 }
 export const tinhLeChuaThanhThanHienxuong = (easter: Date): Date => {
-    return addDate(easter, 49);
+    const d = cloneDate(easter);
+    return addDate(d, 49);
 }
 
 export const tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = (leKiToVua: Date, leChuatthienxuong: Date): number => {

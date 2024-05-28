@@ -34,10 +34,10 @@ export const nameOfDays = {
 export function tinhNamPhungVu(y: number): NamPhungVu {
     const tuanmuaVong = tinh4TuanMuaVong(y);
     const easter = tinhNgayPhucSinh(y);
-    const ashWednesday = tinhThuTuLeTro(cloneDate(easter));
+    const ashWednesday = tinhThuTuLeTro(easter);
     const chuaHienLinh = tinhLeChuaHienLinh(y);
     const leChuaKiToVua = tinhLeChuaKiToVua(tuanmuaVong.week1);
-    const pentecostSunday = tinhLeChuaThanhThanHienxuong(cloneDate(easter));
+    const pentecostSunday = tinhLeChuaThanhThanHienxuong(easter);
     const chuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong(
         leChuaKiToVua,
         pentecostSunday
