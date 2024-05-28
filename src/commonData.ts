@@ -35,6 +35,7 @@ export type NamPhungVu = {
     sixthSundayOfEaster: Date,
     theAscentionOfTheLord: Date,
     pentecostSunday: Date,
+    chuaKitoVua: Date,
     firstSundayOfAdvent: Date,
     secondSundayOfAdvent: Date,
     thirdSundayOfAdvent: Date,

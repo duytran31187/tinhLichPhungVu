@@ -1,7 +1,7 @@
 import { NamPhungVu } from "./commonData";
 import { tinh4TuanMuaVong, tinhNamABC } from "./tinh4TuanMuaVong";
 import { tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh, tinhLeThanhGia, tinhLeChuaChiuPhepRua } from "./tinhlephucsinh";
-import { addDate, getChristmasDay } from "./utils";
+import { addDate, cloneDate, getChristmasDay } from "./utils";
 export const nameOfDays = {
     year: 'year( Năm)',
     yearABC: 'A|B|C (năm A|B|C)',
@@ -34,14 +34,22 @@ export const nameOfDays = {
     thirdSundayOfAdvent: 'Third Sunday of Advent (Chúa nhật thứ 3 mùa vọng)',
     fourthSundayOfAdvent: 'Fourth Sunday of Advent (Chúa nhật thứ tư mùa vọng)',
     christmas: 'Christmas (Giáng sinh)',
-    leThanhGia: 'Lễ Thánh Gia'
+    leThanhGia: 'Lễ Thánh Gia',
+    chuaKitoVua: 'Lễ Chúa KiTo Vua'
 };
+export const tinhLeChuaKiToVua = (chuaNhatThuNhatMuaVong: Date): Date => {
+    //Lễ Kitô Vua là Chúa Nhật gần với Chúa Nhật I Mùa Vọng
+    const ngayLe = cloneDate(chuaNhatThuNhatMuaVong);
+    ngayLe.setDate(ngayLe.getDate() - 7);
+    return ngayLe;
+}
 
 export function tinhNamPhungVu(y: number): NamPhungVu {
     const tuanmuaVong = tinh4TuanMuaVong(y);
     const easter = tinhNgayPhucSinh(y);
     const ashWednesday = tinhThuTuLeTro(easter);
     const chuaHienLinh = tinhLeChuaHienLinh(y);
+    const leChuaKiToVua = tinhLeChuaKiToVua(tuanmuaVong.week1);
     return {
         year: y,
         yearABC: tinhNamABC(y),
@@ -68,6 +76,7 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
         sixthSundayOfEaster: addDate(easter, 35),
         theAscentionOfTheLord: addDate(easter, 42),
         pentecostSunday: addDate(easter, 49),
+        chuaKitoVua: leChuaKiToVua,
         firstSundayOfAdvent: tuanmuaVong.week1,
         secondSundayOfAdvent: tuanmuaVong.week2,
         thirdSundayOfAdvent: tuanmuaVong.week3,
