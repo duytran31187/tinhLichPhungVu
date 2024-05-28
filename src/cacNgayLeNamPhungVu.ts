@@ -5,7 +5,6 @@ import { simpleDate, MuaphungSinh } from './commonData';
 import { addDate, timChuaNhatGanNhatTuNgay } from './utils';
 // chuyen doi ngay duong sang ngay âm
 
-
 export const tinhngayramsau21thang3 = (y: number): simpleDate => {
     // tim ngay rằm
     let ngayRamFound = false;
@@ -38,13 +37,11 @@ export const tinhngayramsau21thang3 = (y: number): simpleDate => {
         day: dateFrom21
     };
 };
-
 export function tinhThuTuLeTro(ngayLePhucSinh: Date) {
     const thutuLeTro = cloneDate(ngayLePhucSinh);
     thutuLeTro.setDate(thutuLeTro.getDate() - 46);
     return thutuLeTro;
 }
-
 export const tinhNgayPhucSinh = (year: number): Date => {// tim ngay chua nhat gan nhat SAU ngay ram
     const simpleDateParam: simpleDate = tinhngayramsau21thang3(year);
     let closestSunday = new Date(simpleDateParam.year + '-' + simpleDateParam.month + '-' + simpleDateParam.day);
@@ -71,7 +68,6 @@ export function tinhLeChuaHienLinh(y: number): Date {
             return ngayLeHienLinh; // chu nhat
     }
 }
-
 export function tinhLeThanhGia(y: number): Date {
     // the Octave (Bát Nhật Giáng Sinh) 25-1/1
     // Lễ Thánh Gia: chọn ngày CN trong tuần Bát Nhật Giáng Sinh, nếu không có ngày CN, thì chọn ngày 30/12
@@ -109,12 +105,14 @@ export function tinhLeChuaChiuPhepRua(y: number): Date {
     }
     return ngayLe;
 }
-
 export const tinhLeChuaKiToVua = (chuaNhatThuNhatMuaVong: Date): Date => {
     //Lễ Kitô Vua là Chúa Nhật gần với Chúa Nhật I Mùa Vọng
     const ngayLe = cloneDate(chuaNhatThuNhatMuaVong);
     ngayLe.setDate(ngayLe.getDate() - 7);
     return ngayLe;
+}
+export const tinhLeChuaThanhThanHienxuong = (easter: Date): Date => {
+    return addDate(easter, 49);
 }
 
 export const tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = (leKiToVua: Date, leChuatthienxuong: Date): number => {

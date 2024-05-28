@@ -1,5 +1,5 @@
 import { NamPhungVu } from "./commonData";
-import { tinh4TuanMuaVong, tinhNamABC, tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh, tinhLeThanhGia, tinhLeChuaChiuPhepRua, tinhLeChuaKiToVua, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong} from "./tinhlephucsinh";
+import { tinhLeChuaThanhThanHienxuong, tinh4TuanMuaVong, tinhNamABC, tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh, tinhLeThanhGia, tinhLeChuaChiuPhepRua, tinhLeChuaKiToVua, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong} from "./cacNgayLeNamPhungVu";
 import { addDate, getChristmasDay } from "./utils";
 export const nameOfDays = {
     year: 'year( Năm)',
@@ -37,7 +37,7 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
     const ashWednesday = tinhThuTuLeTro(easter);
     const chuaHienLinh = tinhLeChuaHienLinh(y);
     const leChuaKiToVua = tinhLeChuaKiToVua(tuanmuaVong.week1);
-    const pentecostSunday = addDate(easter, 49);
+    const pentecostSunday = tinhLeChuaThanhThanHienxuong(easter);
     const chuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong(
         leChuaKiToVua,
         pentecostSunday
