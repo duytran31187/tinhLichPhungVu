@@ -7,12 +7,6 @@ export const nameOfDays = {
     yearABC: 'A|B|C (năm A|B|C)',
     oddEven: 'Odd|Even (Năm chẵn lẻ)',
     theEpiphanyOfTheLord: 'The Epiphany of the Lord (Lễ Chúa Hiển Linh)',
-    chuaNhatThu1ThuongNien: 'Chua Nhat thuong nien 1',
-    chuaNhatThu2ThuongNien: 'Chua Nhat thuong nien 2',
-    chuaNhatThu3ThuongNien: 'Chua Nhat thuong nien 3',
-    chuaNhatThu4ThuongNien: 'Chua Nhat thuong nien 4',
-    chuaNhatThu5ThuongNien: 'Chua Nhat thuong nien 5',
-    chuaNhatThu6ThuongNien: 'Chua Nhat thuong nien 6',
     leChuaChiuPhepRua: 'Lễ Chúa chịu phép rửa',
     ashWed: 'Ash Wednesday (Thứ tư lễ tro)',
     firstSundayOfLent: 'First Sunday of Lent (Chúa nhật thứ nhất mùa chay)',
@@ -35,7 +29,8 @@ export const nameOfDays = {
     fourthSundayOfAdvent: 'Fourth Sunday of Advent (Chúa nhật thứ tư mùa vọng)',
     christmas: 'Christmas (Giáng sinh)',
     leThanhGia: 'Lễ Thánh Gia',
-    chuaKitoVua: 'Lễ Chúa KiTo Vua'
+    chuaKitoVua: 'Lễ Chúa KiTo Vua',
+    firstOrdinarySundayAfterPentecostSunday: 'Chua Nhat Thuong Nien sau Le Chua Thanh than hien xuong'
 };
 export const tinhLeChuaKiToVua = (chuaNhatThuNhatMuaVong: Date): Date => {
     //Lễ Kitô Vua là Chúa Nhật gần với Chúa Nhật I Mùa Vọng
@@ -44,22 +39,41 @@ export const tinhLeChuaKiToVua = (chuaNhatThuNhatMuaVong: Date): Date => {
     return ngayLe;
 }
 
+export const tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = (leKiToVua: Date, leChuatthienxuong: Date): number => {
+    // leKiToVua la tuan 34
+    let count = 33;
+    let found = false;
+    leKiToVua.setHours(10); // make sure same hour just date is diff
+    leChuatthienxuong.setHours(10);  // make sure same hour just date is diff
+    do {
+        let sunday34 = cloneDate(leKiToVua); // la tuan 34
+        sunday34.setDate(sunday34.getDate() - ((34-count)*7));
+        console.log(`${count} --- ${sunday34.toDateString()}`);
+        count--;
+        if (sunday34.getTime() <= leChuatthienxuong.getTime()) {
+            found = true;
+        }
+    } while (!found);
+    return count+2; //
+}
+
 export function tinhNamPhungVu(y: number): NamPhungVu {
     const tuanmuaVong = tinh4TuanMuaVong(y);
     const easter = tinhNgayPhucSinh(y);
     const ashWednesday = tinhThuTuLeTro(easter);
     const chuaHienLinh = tinhLeChuaHienLinh(y);
     const leChuaKiToVua = tinhLeChuaKiToVua(tuanmuaVong.week1);
+    const pentecostSunday = addDate(easter, 49);
+    const chuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong(
+        leChuaKiToVua,
+        pentecostSunday
+    );
     return {
         year: y,
         yearABC: tinhNamABC(y),
         oddEven: y % 2 == 0 ? 'Even ( Năm chẵn)' : 'Odd (Năm lẻ)',
         theEpiphanyOfTheLord: chuaHienLinh,
-        chuaNhatThu2ThuongNien: addDate(chuaHienLinh,7),
-        chuaNhatThu3ThuongNien: addDate(chuaHienLinh,14),
-        chuaNhatThu4ThuongNien: addDate(chuaHienLinh,21),
-        chuaNhatThu5ThuongNien: addDate(chuaHienLinh,28),
-        chuaNhatThu6ThuongNien: addDate(chuaHienLinh,35),
+        firstOrdinarySundayAfterPentecostSunday: chuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong,
         leChuaChiuPhepRua: tinhLeChuaChiuPhepRua(y),
         ashWed: ashWednesday,
         firstSundayOfLent: addDate(ashWednesday, 4),
@@ -75,7 +89,7 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
         fifthSundayOfEaster: addDate(easter, 28),
         sixthSundayOfEaster: addDate(easter, 35),
         theAscentionOfTheLord: addDate(easter, 42),
-        pentecostSunday: addDate(easter, 49),
+        pentecostSunday: pentecostSunday,
         chuaKitoVua: leChuaKiToVua,
         firstSundayOfAdvent: tuanmuaVong.week1,
         secondSundayOfAdvent: tuanmuaVong.week2,
@@ -85,7 +99,7 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
         leThanhGia: tinhLeThanhGia(y)
     }
 }
-// const namphungVuIns = tinhNamPhungVu(2024);
+const namphungVuIns = tinhNamPhungVu(2025);
 // for( let key in namphungVuIns) 
 // {
 //     const val = namphungVuIns[key] instanceof Date ? namphungVuIns[key].toDateString() : namphungVuIns[key];

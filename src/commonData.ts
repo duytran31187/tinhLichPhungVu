@@ -14,11 +14,6 @@ export type NamPhungVu = {
     yearABC: string,
     oddEven: string,
     theEpiphanyOfTheLord: Date,
-    chuaNhatThu2ThuongNien: Date,
-    chuaNhatThu3ThuongNien: Date,
-    chuaNhatThu4ThuongNien: Date,
-    chuaNhatThu5ThuongNien: Date,
-    chuaNhatThu6ThuongNien: Date,
     leChuaChiuPhepRua: Date,
     ashWed: Date,
     firstSundayOfLent: Date,
@@ -41,6 +36,7 @@ export type NamPhungVu = {
     thirdSundayOfAdvent: Date,
     fourthSundayOfAdvent: Date,
     christmas: Date,
-    leThanhGia: Date
+    leThanhGia: Date,
+    firstOrdinarySundayAfterPentecostSunday: number, // chua nhat dau tien sau le chua thanh than hien xuong la chua nhat thuong nien thu may ?
   }
   

@@ -111,7 +111,6 @@ export function tinhLeChuaChiuPhepRua(y: number): Date {
     const leHienLinh = tinhLeChuaHienLinh(y);
     const day7 = new Date(y + '-1-7');
     const day8 = new Date(y + '-1-8');
-    console.log(`leHienLinh ${leHienLinh.toDateString()}`);
     let ngayLe: Date;
     if (leHienLinh.getTime() == day7.getTime()) {
         // chon ngay t2 ke tiep
