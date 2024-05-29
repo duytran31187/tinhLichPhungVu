@@ -34,7 +34,7 @@ export const nameOfDays = {
 export function tinhNamPhungVu(y: number): any {
     const tuanmuaVong = tinh4TuanMuaVong(y);
     const easter = tinhNgayPhucSinh(y);
-    if (!(easter instanceof Date)) {
+    if (!(easter instanceof Date)) { // istanbul ignore next
         return false;
     }
     const ashWednesday = tinhThuTuLeTro(easter);
@@ -46,7 +46,7 @@ export function tinhNamPhungVu(y: number): any {
         pentecostSunday
     );
     const leChuaChiuPhepRua = tinhLeChuaChiuPhepRua(y);
-    if (!(leChuaChiuPhepRua instanceof Date)) {
+    if (!(leChuaChiuPhepRua instanceof Date)) { // istanbul ignore next
         return false;
     }
     return {

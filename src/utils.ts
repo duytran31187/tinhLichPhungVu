@@ -21,7 +21,7 @@ export function addDate(currentDate: Date, numOfDate: number) {
     return newDate;
 };
 export function getChristmasDay(year: number) {
-    return new Date(year + '-12-25');
+    return newDate(year, 12, 25);
 }
 export function timNgayTrongTuanSauNgay(d: Date, dayOfWeek: number): Date | null | undefined {
     // dayOfWeek: 0: sun, 6: Saturday
