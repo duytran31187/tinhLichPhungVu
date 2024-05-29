@@ -31,9 +31,12 @@ export const nameOfDays = {
     chuaKitoVua: 'Lễ Chúa KiTo Vua',
     firstOrdinarySundayAfterPentecostSunday: 'Chua Nhat Thuong Nien sau Le Chua Thanh than hien xuong'
 };
-export function tinhNamPhungVu(y: number): NamPhungVu {
+export function tinhNamPhungVu(y: number): any {
     const tuanmuaVong = tinh4TuanMuaVong(y);
     const easter = tinhNgayPhucSinh(y);
+    if (!(easter instanceof Date)) {
+        return false;
+    }
     const ashWednesday = tinhThuTuLeTro(easter);
     const chuaHienLinh = tinhLeChuaHienLinh(y);
     const leChuaKiToVua = tinhLeChuaKiToVua(tuanmuaVong.week1);
@@ -42,13 +45,17 @@ export function tinhNamPhungVu(y: number): NamPhungVu {
         leChuaKiToVua,
         pentecostSunday
     );
+    const leChuaChiuPhepRua = tinhLeChuaChiuPhepRua(y);
+    if (!(leChuaChiuPhepRua instanceof Date)) {
+        return false;
+    }
     return {
         year: y,
         yearABC: tinhNamABC(y),
         oddEven: y % 2 == 0 ? 'Even ( Năm chẵn)' : 'Odd (Năm lẻ)',
         theEpiphanyOfTheLord: chuaHienLinh,
         firstOrdinarySundayAfterPentecostSunday: chuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong,
-        leChuaChiuPhepRua: tinhLeChuaChiuPhepRua(y),
+        leChuaChiuPhepRua: leChuaChiuPhepRua,
         ashWed: ashWednesday,
         firstSundayOfLent: firstSundayOfLent(ashWednesday),
         secondSundayOfLent: secondSundayOfLent(ashWednesday),

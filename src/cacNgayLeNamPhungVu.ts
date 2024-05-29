@@ -1,6 +1,6 @@
 const { convertSolar2Lunar } = require('./lephucsinhlib');
 
-import { cloneDate, getChristmasDay, timNgayTrongTuanSauNgay } from './utils';
+import { cloneDate, getChristmasDay, newDate, timNgayTrongTuanSauNgay } from './utils';
 import { simpleDate, MuaphungSinh } from './commonData';
 import { addDate, timChuaNhatGanNhatTuNgay } from './utils';
 // chuyen doi ngay duong sang ngay âm
@@ -42,10 +42,15 @@ export function tinhThuTuLeTro(ngayLePhucSinh: Date) {
     d.setDate(d.getDate() - 46);
     return d;
 }
-export const tinhNgayPhucSinh = (year: number): Date => {// tim ngay chua nhat gan nhat SAU ngay ram
+export const tinhNgayPhucSinh = (year: number): Date | false => {// tim ngay chua nhat gan nhat SAU ngay ram
     const simpleDateParam: simpleDate = tinhngayramsau21thang3(year);
     let closestSunday = new Date(simpleDateParam.year + '-' + simpleDateParam.month + '-' + simpleDateParam.day);
-    return timChuaNhatGanNhatTuNgay(closestSunday);
+    const foundDate = timChuaNhatGanNhatTuNgay(closestSunday);
+    if (foundDate instanceof Date) {
+        return foundDate;
+    }
+    // istanbul ignore next
+    return false;
 }
 export function tinhLeChuaHienLinh(y: number): Date {
     // Lễ Hiển Linh: vào ngày 6/1 - nhưng thường chuyển vào ngày CN gần ngày 6/1 nhất
@@ -63,7 +68,7 @@ export function tinhLeChuaHienLinh(y: number): Date {
             return new Date(y + '-01-8'); // +2
         case 6:// t7
             return new Date(y + '-01-7');  // +1  
-        default:
+        default: // istanbul ignore next
             return ngayLeHienLinh; // chu nhat
     }
 }
@@ -87,12 +92,12 @@ export function tinhLeThanhGia(y: number): Date {
     } while (!breakTheLoop)
     return foundDate;
 }
-export function tinhLeChuaChiuPhepRua(y: number): Date {
+export function tinhLeChuaChiuPhepRua(y: number): Date | false {
     // Lễ Chúa chịu phép rửa: thường vào ngày CN tiếp theo CN Hiển Linh, trừ trường hợp CN hiển Linh rơi vào 2 ngày 7/1 và 8/1 thì lễ Chúa Chịu Phép rửa chọn ngay ngày thứ 2 sau đó
     const leHienLinh = tinhLeChuaHienLinh(y);
     const day7 = new Date(y + '-1-7');
     const day8 = new Date(y + '-1-8');
-    let ngayLe: Date;
+    let ngayLe: any;
     if (leHienLinh.getTime() == day7.getTime()) {
         // chon ngay t2 ke tiep
         ngayLe = timNgayTrongTuanSauNgay(day7, 1);
@@ -102,7 +107,11 @@ export function tinhLeChuaChiuPhepRua(y: number): Date {
     } else {
         ngayLe = timNgayTrongTuanSauNgay(leHienLinh, 0);
     }
-    return ngayLe;
+    if(ngayLe instanceof Date) {
+        return ngayLe;
+    } else { // istanbul ignore next
+        return false;
+    }
 }
 export const tinhLeChuaKiToVua = (chuaNhatThuNhatMuaVong: Date): Date => {
     //Lễ Kitô Vua là Chúa Nhật gần với Chúa Nhật I Mùa Vọng
