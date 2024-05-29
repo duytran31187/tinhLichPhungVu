@@ -1,6 +1,6 @@
 import { NamPhungVu } from "./commonData";
 import { tinhLeChuaThanhThanHienxuong, tinh4TuanMuaVong, tinhNamABC, tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh, tinhLeThanhGia, tinhLeChuaChiuPhepRua, tinhLeChuaKiToVua, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong, firstSundayOfLent, secondSundayOfLent, thirdSundayOfLent, palmSunday, fifthSundayOfLent, fourthSundayOfLent, calculateTheAscentionOfTheLord} from "./cacNgayLeNamPhungVu";
-import { addDate, cloneDate, getChristmasDay } from "./utils";
+import { addDate, cloneDate, getChristmasDay, printDate } from "./utils";
 export const nameOfDays = {
     year: 'year( Năm)',
     yearABC: 'A|B|C (năm A|B|C)',
@@ -31,7 +31,7 @@ export const nameOfDays = {
     chuaKitoVua: 'Lễ Chúa KiTo Vua',
     firstOrdinarySundayAfterPentecostSunday: 'Chua Nhat Thuong Nien sau Le Chua Thanh than hien xuong'
 };
-export function tinhNamPhungVu(y: number): any {
+export function tinhNamPhungVu(y: number): NamPhungVu | false {
     const tuanmuaVong = tinh4TuanMuaVong(y);
     const easter = tinhNgayPhucSinh(y);
     if (!(easter instanceof Date)) { // istanbul ignore next
