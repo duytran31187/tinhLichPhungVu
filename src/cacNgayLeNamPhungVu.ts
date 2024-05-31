@@ -115,8 +115,9 @@ export function tinhLeChuaChiuPhepRua(y: number): Date | false {
 }
 export const tinhLeChuaKiToVua = (chuaNhatThuNhatMuaVong: Date): Date => {
     //Lễ Kitô Vua là Chúa Nhật gần với Chúa Nhật I Mùa Vọng
-    chuaNhatThuNhatMuaVong.setDate(chuaNhatThuNhatMuaVong.getDate() - 7);
-    return chuaNhatThuNhatMuaVong;
+    let tuan = cloneDate(chuaNhatThuNhatMuaVong);
+    tuan.setDate(tuan.getDate() - 7);
+    return tuan;
 }
 export const tinhLeChuaThanhThanHienxuong = (easter: Date): Date => {
     const d = cloneDate(easter);

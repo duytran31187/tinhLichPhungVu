@@ -1,6 +1,6 @@
 import { NamPhungVu } from "./commonData";
 import { tinhLeChuaThanhThanHienxuong, tinh4TuanMuaVong, tinhNamABC, tinhLeChuaHienLinh, tinhThuTuLeTro, tinhNgayPhucSinh, tinhLeThanhGia, tinhLeChuaChiuPhepRua, tinhLeChuaKiToVua, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong, firstSundayOfLent, secondSundayOfLent, thirdSundayOfLent, palmSunday, fifthSundayOfLent, fourthSundayOfLent, calculateTheAscentionOfTheLord} from "./cacNgayLeNamPhungVu";
-import { addDate, cloneDate, getChristmasDay, printDate } from "./utils";
+import { addDate, cloneDate, getChristmasDay, newDate, printDate } from "./utils";
 export const nameOfDays = {
     year: 'year( Năm)',
     yearABC: 'A|B|C (năm A|B|C)',
@@ -29,7 +29,9 @@ export const nameOfDays = {
     christmas: 'Christmas (Giáng sinh)',
     leThanhGia: 'Lễ Thánh Gia',
     chuaKitoVua: 'Lễ Chúa KiTo Vua',
-    firstOrdinarySundayAfterPentecostSunday: 'Chua Nhat Thuong Nien sau Le Chua Thanh than hien xuong'
+    firstOrdinarySundayAfterPentecostSunday: 'Chua Nhat Thuong Nien sau Le Chua Thanh than hien xuong',
+    leDucMeChuaTroi: 'Thánh Ma-ri-a, Ðức Mẹ Chúa Trời',
+    dangchuaGiesuTrongDenThanh: 'Dâng Chúa Giê-su Trong Đền Thánh',
 };
 export function tinhNamPhungVu(y: number): NamPhungVu | false {
     const tuanmuaVong = tinh4TuanMuaVong(y);
@@ -53,6 +55,8 @@ export function tinhNamPhungVu(y: number): NamPhungVu | false {
         year: y,
         yearABC: tinhNamABC(y),
         oddEven: y % 2 == 0 ? 'Even ( Năm chẵn)' : 'Odd (Năm lẻ)',
+        leDucMeChuaTroi: newDate(y, 1,1),
+        dangchuaGiesuTrongDenThanh: newDate(y,2,2),
         theEpiphanyOfTheLord: chuaHienLinh,
         firstOrdinarySundayAfterPentecostSunday: chuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong,
         leChuaChiuPhepRua: leChuaChiuPhepRua,

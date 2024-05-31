@@ -13,6 +13,8 @@ export type NamPhungVu = {
     year: number,
     yearABC: string,
     oddEven: string,
+    leDucMeChuaTroi: Date,
+    dangchuaGiesuTrongDenThanh: Date
     theEpiphanyOfTheLord: Date,
     leChuaChiuPhepRua: Date,
     ashWed: Date,
