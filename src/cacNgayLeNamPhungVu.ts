@@ -123,6 +123,18 @@ export const tinhLeChuaThanhThanHienxuong = (easter: Date): Date => {
     const d = cloneDate(easter);
     return addDate(d, 49);
 }
+export const tinhLeChuaBaNgoi = (leChuaThanhThanHienXuong: Date): Date => {
+    const d = cloneDate(leChuaThanhThanHienXuong);
+    return addDate(d, 7);
+}
+export const tinhLeMinhMauThanhChua = (tinhLeChuaBaNgoi: Date): Date => {
+    const d = cloneDate(tinhLeChuaBaNgoi);
+    return addDate(d, 7);
+}
+export const tinhLeThanhTamChuaGieSu = (tinhLeMinhMauThanhChua: Date): Date => {
+    const d = cloneDate(tinhLeMinhMauThanhChua);
+    return addDate(d, 7);
+}
 
 export const tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = (leKiToVua: Date, leChuatthienxuong: Date): number => {
     // leKiToVua la tuan 34

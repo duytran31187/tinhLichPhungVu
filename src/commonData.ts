@@ -32,6 +32,9 @@ export type NamPhungVu = {
     sixthSundayOfEaster: Date,
     theAscentionOfTheLord: Date,
     pentecostSunday: Date,
+    leChuaBaNgoi: Date,
+    leMinhMauThanhChua: Date,
+    leThanhTamChuaGieSu: Date,
     chuaKitoVua: Date,
     firstSundayOfAdvent: Date,
     secondSundayOfAdvent: Date,
@@ -40,5 +43,5 @@ export type NamPhungVu = {
     christmas: Date,
     leThanhGia: Date,
     firstOrdinarySundayAfterPentecostSunday: number, // chua nhat dau tien sau le chua thanh than hien xuong la chua nhat thuong nien thu may ?
-  }
+}
   
