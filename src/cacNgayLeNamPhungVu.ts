@@ -133,7 +133,7 @@ export const tinhLeMinhMauThanhChua = (tinhLeChuaBaNgoi: Date): Date => {
 }
 export const tinhLeThanhTamChuaGieSu = (tinhLeMinhMauThanhChua: Date): Date => {
     const d = cloneDate(tinhLeMinhMauThanhChua);
-    return addDate(d, 7);
+    return addDate(d, 5);
 }
 
 export const tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong = (leKiToVua: Date, leChuatthienxuong: Date): number => {

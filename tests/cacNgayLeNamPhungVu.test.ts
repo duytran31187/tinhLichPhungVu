@@ -214,8 +214,8 @@ describe('tinhLeChuaThanhThanHienxuong- tinhLeChuaBaNgoi - tinhLeMinhMauThanhChu
 		expect(tinhLeMinhMauThanhChua(leChua3Ngoi).toDateString()).toStrictEqual(new Date('2024-06-02').toDateString());
 
 		const inputDate = tinhLeMinhMauThanhChua(tinhLeChuaBaNgoi(leChuaThanhThanHienXuong));
-		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2024-06-09').toDateString());
-		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2024-06-09').toDateString());
+		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2024-06-07').toDateString());
+		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2024-06-07').toDateString());
 	});
 	it('2025', () => {
 		const easter = tinhNgayPhucSinh(2025) as Date;
@@ -234,8 +234,8 @@ describe('tinhLeChuaThanhThanHienxuong- tinhLeChuaBaNgoi - tinhLeMinhMauThanhChu
 		expect(tinhLeMinhMauThanhChua(leChua3Ngoi).toDateString()).toStrictEqual(new Date('2025-06-22').toDateString());
 
 		const inputDate = tinhLeMinhMauThanhChua(tinhLeChuaBaNgoi(leChuaThanhThanHienXuong));
-		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2025-06-29').toDateString());
-		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2025-06-29').toDateString());
+		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2025-06-27').toDateString());
+		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2025-06-27').toDateString());
 	});
 	it('2026', () => {
 		const easter = tinhNgayPhucSinh(2026) as Date;
@@ -254,8 +254,8 @@ describe('tinhLeChuaThanhThanHienxuong- tinhLeChuaBaNgoi - tinhLeMinhMauThanhChu
 		expect(tinhLeMinhMauThanhChua(leChua3Ngoi).toDateString()).toStrictEqual(new Date('2026-06-07').toDateString());
 
 		const inputDate = tinhLeMinhMauThanhChua(tinhLeChuaBaNgoi(leChuaThanhThanHienXuong));
-		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2026-06-14').toDateString());
-		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2026-06-14').toDateString());
+		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2026-06-12').toDateString());
+		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2026-06-12').toDateString());
 	});
 	it('2027', () => {
 		const easter = tinhNgayPhucSinh(2027) as Date;
@@ -274,8 +274,8 @@ describe('tinhLeChuaThanhThanHienxuong- tinhLeChuaBaNgoi - tinhLeMinhMauThanhChu
 		expect(tinhLeMinhMauThanhChua(leChua3Ngoi).toDateString()).toStrictEqual(new Date('2027-05-30').toDateString());
 
 		const inputDate = tinhLeMinhMauThanhChua(tinhLeChuaBaNgoi(leChuaThanhThanHienXuong));
-		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2027-06-06').toDateString());
-		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2027-06-06').toDateString());
+		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2027-06-04').toDateString());
+		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2027-06-04').toDateString());
 	});
 	it('2028', () => {
 		const easter = tinhNgayPhucSinh(2028) as Date;
@@ -294,8 +294,8 @@ describe('tinhLeChuaThanhThanHienxuong- tinhLeChuaBaNgoi - tinhLeMinhMauThanhChu
 		expect(tinhLeMinhMauThanhChua(leChua3Ngoi).toDateString()).toStrictEqual(new Date('2028-06-18').toDateString());
 
 		const inputDate = tinhLeMinhMauThanhChua(tinhLeChuaBaNgoi(leChuaThanhThanHienXuong));
-		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2028-06-25').toDateString());
-		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2028-06-25').toDateString());
+		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2028-06-23').toDateString());
+		expect(tinhLeThanhTamChuaGieSu(inputDate).toDateString()).toStrictEqual(new Date('2028-06-23').toDateString());
 	});
 });
 describe('tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong', () => {
