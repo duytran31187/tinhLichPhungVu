@@ -32,7 +32,7 @@ export class tinhNamPhungVu
     }
     private get ngayLeTro(): Date {
         if (!this.pThuTuLeTro) {
-            this.pThuTuLeTro = tinhThuTuLeTro(this.ngayLePhucSinh);
+            this.pThuTuLeTro = this.tinhThuTuLeTro();
         }
         return this.pThuTuLeTro;
     }
@@ -64,9 +64,7 @@ export class tinhNamPhungVu
 
     private tinhLichPhungVu()
     {
-        
         const tuanMuaVong = this.bonTuanMuaVong;
-
         const leChuaKiToVua = tinhLeChuaKiToVua(tuanMuaVong.week1);
         const pentecostSunday = tinhLeChuaThanhThanHienxuong(this.ngayLePhucSinh);
         const leChuaBaNgoi = tinhLeChuaBaNgoi(pentecostSunday);
