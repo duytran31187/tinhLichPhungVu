@@ -2,6 +2,9 @@ import { NamPhungVu } from "../src/commonData";
 import { tinhNamPhungVu } from "../src/namPhungVu";
 import { newDate } from "../src/utils";
 
+const strNamChan = 'Even ( Năm chẵn)';
+const strNamLe = "Odd (Năm lẻ)";
+
 describe('test Full nam phung vu', () => {
     const compareResult = (resultNamPhungVu: NamPhungVu, expectedNamPhungVu: NamPhungVu) => {
         Object.entries(expectedNamPhungVu).forEach((item) => {
@@ -17,12 +20,12 @@ describe('test Full nam phung vu', () => {
     }
     it('2024', () => {
         const year = 2024;
-        const ins = new tinhNamPhungVu(2024);
+        const ins = new tinhNamPhungVu(year);
         const resultNamPhungVu = ins.getNamPhungVu()!;
         const expectedNamPhungVu = {
             year: year,
             yearABC: 'B',
-            oddEven: 'Even ( Năm chẵn)',
+            oddEven: strNamChan,
             leDucMeChuaTroi: newDate(year,1,1),
             dangchuaGiesuTrongDenThanh: newDate(year,2,2),
             theEpiphanyOfTheLord: newDate(year, 1 , 7), //lechuahienlinh
@@ -58,12 +61,12 @@ describe('test Full nam phung vu', () => {
     });
     it('2025', () => {
         const year = 2025;
-        const ins = new tinhNamPhungVu(2025);
+        const ins = new tinhNamPhungVu(year);
         const resultNamPhungVu = ins.getNamPhungVu()!;
         const expectedNamPhungVu = {
             year: year,
             yearABC: 'C',
-            oddEven: 'Odd (Năm lẻ)',
+            oddEven: strNamLe,
             leDucMeChuaTroi: newDate(year,1,1),
             dangchuaGiesuTrongDenThanh: newDate(year,2,2),
             theEpiphanyOfTheLord: newDate(year, 1 , 5), //lechuahienlinh
@@ -94,6 +97,47 @@ describe('test Full nam phung vu', () => {
             fourthSundayOfAdvent: newDate(year, 12, 21), 
             christmas: newDate(year, 12, 25),
             leThanhGia: newDate(year, 12, 28),
+        };
+       compareResult(resultNamPhungVu, expectedNamPhungVu);
+    });
+    it('2026', () => {
+        const year = 2026;
+        const ins = new tinhNamPhungVu(year);
+        const resultNamPhungVu = ins.getNamPhungVu()!;
+        const expectedNamPhungVu = {
+            year: year,
+            yearABC: 'A',
+            oddEven: strNamChan,
+            leDucMeChuaTroi: newDate(year,1,1),
+            dangchuaGiesuTrongDenThanh: newDate(year,2,2),
+            theEpiphanyOfTheLord: newDate(year, 1 , 4), //lechuahienlinh
+            firstOrdinarySundayAfterPentecostSunday: 9,
+            leChuaChiuPhepRua: newDate(year, 1, 11),
+            ashWed: newDate(year, 2, 18),
+            firstSundayOfLent: newDate(year,2, 22),
+            secondSundayOfLent: newDate(year, 3, 1),
+            thirdSundayOfLent: newDate(year, 3, 8),
+            fourthSundayOfLent: newDate(year, 3, 15),
+            fifthSundayOfLent: newDate(year, 3, 22),
+            palmSunday: newDate(year, 3, 29),
+            easterSunday: newDate(year, 4, 5),
+            secondSundayOfEaster: newDate(year, 4, 12), 
+            thirdSundayOfEaster: newDate(year, 4, 19), 
+            fourthSundayOfEaster: newDate(year, 4, 26), 
+            fifthSundayOfEaster: newDate(year, 5, 3), 
+            sixthSundayOfEaster: newDate(year, 5, 10), 
+            theAscentionOfTheLord: newDate(year, 5, 17),
+            pentecostSunday: newDate(year, 5, 24), 
+            leChuaBaNgoi: newDate(year, 5, 31), 
+            leMinhMauThanhChua: newDate(year, 6, 7), 
+            leThanhTamChuaGieSu: newDate(year, 6, 12),
+            chuaKitoVua: newDate(year, 11, 22), 
+            firstSundayOfAdvent: newDate(year, 11, 29), 
+            secondSundayOfAdvent: newDate(year, 12, 6), 
+            thirdSundayOfAdvent: newDate(year, 12, 13), 
+            fourthSundayOfAdvent: newDate(year, 12, 20), 
+            christmas: newDate(year, 12, 25),
+            leThanhGia: newDate(year, 12, 27),
         };
        compareResult(resultNamPhungVu, expectedNamPhungVu);
     });
