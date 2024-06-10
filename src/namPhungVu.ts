@@ -1,5 +1,5 @@
 import { tinh4TuanMuaVong, tinhNgayPhucSinh, tinhThuTuLeTro, tinhLeChuaHienLinh, tinhLeChuaKiToVua, tinhLeChuaThanhThanHienxuong, tinhLeChuaBaNgoi, tinhLeMinhMauThanhChua, tinhLeThanhTamChuaGieSu, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong, tinhLeChuaChiuPhepRua, tinhNamABC, firstSundayOfLent, secondSundayOfLent, thirdSundayOfLent, fourthSundayOfLent, fifthSundayOfLent, palmSunday, calculateTheAscentionOfTheLord, tinhLeThanhGia } from "./cacNgayLeNamPhungVu";
-import { MuaphungSinh, NamPhungVu } from "./commonData";
+import { MuaphungSinh, NamPhungVu, NgayLeData, SingleDateData, nameOfDays } from "./commonData";
 import { newDate, addDate, getChristmasDay } from "./utils";
 
 export class tinhNamPhungVu
@@ -12,9 +12,117 @@ export class tinhNamPhungVu
     private pNgayLeGiangSinh: Date | undefined;
     private p4TuanMuaVong: MuaphungSinh | undefined;
     private namPhungVu: NamPhungVu | undefined;
+    private fullYear: SingleDateData[];
+
 
     constructor(year: number) {
         this.year = year;
+        this.fullYear = []
+    }
+    private getFullYearKeyFromDate(date: Date): number {
+        return parseInt(this.year  + '' + (date.getMonth()+1) + '' + date.getDate());
+    }
+    private addNgayLeVoDanhSach(date: Date, ngayLe: string, loaiNgayLe: string, fixed = false): void {
+        let indexStr = this.getFullYearKeyFromDate(date);
+        const singleDateData: NgayLeData = {
+            name: ngayLe,
+            type: loaiNgayLe,
+            fixed: fixed
+        };
+        if (!this.fullYear[indexStr]) { // init data by date
+            let ngayLeData: SingleDateData = {
+                date: newDate(this.year, date.getMonth()+ 1, date.getDate()),
+                cacNgayLe: [],
+            };
+            this.fullYear[indexStr] = ngayLeData;
+        }
+
+        if (ngayLe != '') { // only add if ngayLe valid
+            this.fullYear[indexStr].cacNgayLe.push(singleDateData);
+        }
+    }
+    private populateCacNgayLeCoDinh(): void {
+        // let arrFullYears: any[string] = [];
+        let date  = new Date(this.year, 0, 1);
+        const endDate = new Date(this.year+1, 0, 1);
+        while(date < endDate) {
+            const searchDatestr = date.toDateString();
+            let ngayLe = '';
+            let loaiNgayLe = '';
+            switch(searchDatestr) {
+                case newDate(this.year, 1, 1).toDateString():
+                    ngayLe = 'Thánh Ma-ri-a, Ðức Mẹ Chúa Trời';
+                    loaiNgayLe = 'T'; // le trong
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;
+                case newDate(this.year, 1, 2).toDateString():
+                    ngayLe = 'Thánh Ba-xi-li-ô Cả và thánh Ghê-gô-ri-ô Na-di-en, giám mục, tiến sĩ Hội Thánh';
+                    loaiNgayLe = 'N';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;
+                case newDate(this.year, 1, 3).toDateString():
+                    ngayLe = 'Kính Danh rất thánh Chúa Giê-su';
+                    loaiNgayLe = '';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;            
+                case newDate(this.year, 1, 7).toDateString():
+                    ngayLe = 'Thánh Rây-mun-đô Pê-nha-pho, linh mục';
+                    loaiNgayLe = '';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;            
+                case newDate(this.year, 1, 13).toDateString():
+                    ngayLe = 'Thánh Hi-la-ri-ô, giám mục, tiến sĩ Hội Thánh';
+                    loaiNgayLe = '';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;
+                case newDate(this.year, 1, 17).toDateString():
+                    ngayLe = 'Thánh An-tôn, viện phụ';
+                    loaiNgayLe = 'N';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;             
+                case newDate(this.year, 1, 20).toDateString():
+                    ngayLe = 'Thánh Pha-bi-a-nô, giáo hoàng, tử đạo';
+                    loaiNgayLe = 'N';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    ngayLe = 'Thánh Xê-bát-ti-a-nô, tử đạo';
+                    loaiNgayLe = '';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;
+                case newDate(this.year, 1, 21).toDateString():
+                    ngayLe = 'Thánh A-nê, trinh nữ, tử đạo';
+                    loaiNgayLe = 'N';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;                 
+                case newDate(this.year, 1, 22).toDateString():
+                    ngayLe = 'Thánh Vinh-sơn, phó tế, tử đạo';
+                    loaiNgayLe = '';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;
+                case newDate(this.year, 1, 24).toDateString():
+                    ngayLe = 'Thánh Phan-xi-cô đơ Xan, giám mục, tiến sĩ Hội Thánh';
+                    loaiNgayLe = '';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;                   
+                case newDate(this.year, 1, 27).toDateString():
+                    ngayLe = 'Thánh An-giê-la Mê-ri-si, trinh nữ';
+                    loaiNgayLe = '';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;                   
+                case newDate(this.year, 1, 28).toDateString():
+                    ngayLe = 'Thánh Tô-ma A-qui-nô, linh mục, tiến sĩ Hội Thánh';
+                    loaiNgayLe = '';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;                   
+                case newDate(this.year, 1, 31).toDateString():
+                    ngayLe = 'Thánh Gio-an Bốt-cô, linh mục';
+                    loaiNgayLe = '';
+                    this.addNgayLeVoDanhSach(date, ngayLe, loaiNgayLe, true);
+                    break;                   
+                default:
+                    this.addNgayLeVoDanhSach(date, '', '', true); // add empty day
+            }
+            date.setDate(date.getDate() + 1);
+        };
     }
 
     private tinhNgayPhucSinh(): Date {
@@ -83,7 +191,7 @@ export class tinhNamPhungVu
             year: this.year,
             yearABC: tinhNamABC(this.year),
             oddEven: this.year % 2 == 0 ? 'Even ( Năm chẵn)' : 'Odd (Năm lẻ)',
-            leDucMeChuaTroi: newDate(this.year, 1,1),
+            // leDucMeChuaTroi: newDate(this.year, 1,1),
             dangchuaGiesuTrongDenThanh: newDate(this.year,2,2),
             theEpiphanyOfTheLord: this.ngayLeChuaHienLinh,
             firstOrdinarySundayAfterPentecostSunday: chuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong,
@@ -122,4 +230,28 @@ export class tinhNamPhungVu
         }
         return this.namPhungVu;
     }
+
+    private populateCalculatedDaysToCalender(): void {
+        const namphungVuIns = this.getNamPhungVu()!;
+        for (let key in namphungVuIns) {
+            if (namphungVuIns.hasOwnProperty(key)) {
+                const val =  namphungVuIns[key as keyof NamPhungVu];
+                const nameOfDate = nameOfDays[key as keyof NamPhungVu];
+                if (val instanceof Date) {
+                    if (nameOfDays.hasOwnProperty(key)) {
+                        this.addNgayLeVoDanhSach(val, nameOfDate, '', false);
+                    } else {
+                        throw new Error('khong the tim thay ten ngay le');
+                    }
+                }
+            }
+        }
+    }
+    public getFullLichPhungVuTheoNam() {
+        this.populateCacNgayLeCoDinh(); // populate
+        this.populateCalculatedDaysToCalender();
+        return this.fullYear;
+        // console.log(this.fullYear);
+    }
+
 }

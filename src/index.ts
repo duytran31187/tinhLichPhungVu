@@ -1,4 +1,5 @@
 import { tinhNamPhungVu } from "./namPhungVu";
 
-const ins = new tinhNamPhungVu(2024);
-console.log(ins.getNamPhungVu());
+export function getTinhNamPhungVuInstant(year: number): tinhNamPhungVu {
+    return new tinhNamPhungVu(year);
+}
