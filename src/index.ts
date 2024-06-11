@@ -1,11 +1,11 @@
 import { nameOfDays } from "./commonData";
-import { tinhNamPhungVu } from "./namPhungVu";
+import { TinhNamPhungVu } from "./TinhNamPhungVu";
 
-export function getTinhNamPhungVuInstant(year: number): tinhNamPhungVu {
-    return new tinhNamPhungVu(year);
+export function getTinhNamPhungVuInstant(year: number): TinhNamPhungVu {
+    return new TinhNamPhungVu(year);
 }
-const ins = getTinhNamPhungVuInstant(2024);
-const fullYear = ins.getFullLichPhungVuTheoNam();
+// const ins = getTinhNamPhungVuInstant(2024);
+// const fullYear = ins.getFullLichPhungVuTheoNam();
 // console.log(fullYear);
 // for (let key in fullYear) {
 //     if (fullYear[key]['cacNgayLe'].length > 0) {

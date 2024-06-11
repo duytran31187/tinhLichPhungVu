@@ -1,5 +1,5 @@
 import { NamPhungVu } from "../src/commonData";
-import { tinhNamPhungVu } from "../src/namPhungVu";
+import { TinhNamPhungVu } from "../src/TinhNamPhungVu";
 import { newDate } from "../src/utils";
 
 const strNamChan = 'Even ( Năm chẵn)';
@@ -20,7 +20,7 @@ describe('test Full nam phung vu', () => {
     }
     it('2024', () => {
         const year = 2024;
-        const ins = new tinhNamPhungVu(year);
+        const ins = new TinhNamPhungVu(year);
         const resultNamPhungVu = ins.getNamPhungVu()!;
         const expectedNamPhungVu = {
             year: year,
@@ -61,7 +61,7 @@ describe('test Full nam phung vu', () => {
     });
     it('2025', () => {
         const year = 2025;
-        const ins = new tinhNamPhungVu(year);
+        const ins = new TinhNamPhungVu(year);
         const resultNamPhungVu = ins.getNamPhungVu()!;
         const expectedNamPhungVu = {
             year: year,
@@ -102,7 +102,7 @@ describe('test Full nam phung vu', () => {
     });
     it('2026', () => {
         const year = 2026;
-        const ins = new tinhNamPhungVu(year);
+        const ins = new TinhNamPhungVu(year);
         const resultNamPhungVu = ins.getNamPhungVu()!;
         const expectedNamPhungVu = {
             year: year,

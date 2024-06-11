@@ -2,7 +2,7 @@ import { tinh4TuanMuaVong, tinhNgayPhucSinh, tinhThuTuLeTro, tinhLeChuaHienLinh,
 import { MuaphungSinh, NamPhungVu, NgayLeData, SingleDateData, danhSachNgayLeCoDinh, nameOfDays } from "./commonData";
 import { newDate, addDate, getChristmasDay, cloneDate } from "./utils";
 
-export class tinhNamPhungVu
+export class TinhNamPhungVu
 {
     private year: number;
     private pLePhucSinh: Date | undefined; // start with p => mean property
