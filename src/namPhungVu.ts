@@ -1,6 +1,6 @@
 import { tinh4TuanMuaVong, tinhNgayPhucSinh, tinhThuTuLeTro, tinhLeChuaHienLinh, tinhLeChuaKiToVua, tinhLeChuaThanhThanHienxuong, tinhLeChuaBaNgoi, tinhLeMinhMauThanhChua, tinhLeThanhTamChuaGieSu, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong, tinhLeChuaChiuPhepRua, tinhNamABC, firstSundayOfLent, secondSundayOfLent, thirdSundayOfLent, fourthSundayOfLent, fifthSundayOfLent, palmSunday, calculateTheAscentionOfTheLord, tinhLeThanhGia } from "./cacNgayLeNamPhungVu";
 import { MuaphungSinh, NamPhungVu, NgayLeData, SingleDateData, danhSachNgayLeCoDinh, nameOfDays } from "./commonData";
-import { newDate, addDate, getChristmasDay } from "./utils";
+import { newDate, addDate, getChristmasDay, cloneDate } from "./utils";
 
 export class tinhNamPhungVu
 {
@@ -11,23 +11,30 @@ export class tinhNamPhungVu
     private pLeThanhGia: Date | undefined;
     private pNgayLeGiangSinh: Date | undefined;
     private p4TuanMuaVong: MuaphungSinh | undefined;
-    private namPhungVu: NamPhungVu | undefined;
-    private fullYear: SingleDateData[];
+    private namPhungVu: NamPhungVu | undefined; // cac ngay le tinh theo cong thu
+    private fullYear: SingleDateData[] = []; // full 365 ngay
+    private firstSundayOfYear: Date | undefined = undefined; // CN tuan dau tien de tinh mua thuong nien
 
 
     constructor(year: number) {
-        this.year = year;
-        this.fullYear = [];
+        this.year = +year; //make sure is number
         /// init danh sach
-        let date  = new Date(this.year, 0, 1);
-        const endDate = new Date(this.year+1, 0, 1);
+        let date  = newDate(this.year, 1, 1);
+        const endDate = newDate(this.year+1, 1, 1);
         while(date < endDate) {
+            if (!this.firstSundayOfYear && date.getDay() == 0) {
+                this.firstSundayOfYear = cloneDate(date);
+            }
             this.addNgayLeVoDanhSach(date, '', '', true);
             date.setDate(date.getDate() + 1);
         };
     }
     private getFullYearKeyFromDate(date: Date): number {// index of this.fullYear
-        return date.getTime();
+        const clonedD = cloneDate(date);
+        clonedD.setHours(0);
+        clonedD.setMinutes(0);
+        clonedD.setSeconds(0);
+        return clonedD.getTime();
     }
     private addNgayLeVoDanhSach(date: Date, ngayLe: string, loaiNgayLe: string|undefined, fixed = false): void {
         let indexStr = this.getFullYearKeyFromDate(date);
@@ -179,11 +186,65 @@ export class tinhNamPhungVu
             this.addNgayLeVoDanhSach(d.date!, d.name, d.type, d.fixed);
         }
     }
+    /**
+     * goi sau khi da populate het cac ngay le co dinh, theo cong thu
+     */
+    private tinhchuaNhatMuaThuongNien(): void {
+        // mua thuong nien lan 1: Sau Lễ Chúa chịu phép rửa tới trươc thu 4 le tro
+        // CN đau tien cua nam
+        const namPhungVu = this.namPhungVu!;
+        const leChuaHienLinh = namPhungVu.theEpiphanyOfTheLord;
+        const leChuaThanhThanHienxuong = namPhungVu.pentecostSunday;
+        let d = cloneDate(leChuaHienLinh);
+        d.setDate(d.getDate() + 7); // CN dau tien sau le hien linh
+        const thu4LeTro = namPhungVu.ashWed;
+        let muaThuongNienThu = 2;
+        while(d.getTime() < thu4LeTro.getTime()) {
+            this.addNgayLeVoDanhSach(
+                d,
+                'CN thu ' + muaThuongNienThu + ' mua thuong nien',
+                '',
+                false
+            );
+            d.setDate(d.getDate() + 7);
+            muaThuongNienThu++;
+        }
+        // CN thu 1 cua nam là 
+        // mua thuong nien lan 2: sau le chua thanh than hien xuong
+        muaThuongNienThu = namPhungVu.firstOrdinarySundayAfterPentecostSunday;
+        d = cloneDate(namPhungVu.leMinhMauThanhChua);
+        d.setHours(0);
+        d.setMinutes(0);
+        d.setSeconds(0);
+        d.setDate(d.getDate()+7);
+        // console.log(`le chus thanh than ${leChuaThanhThanHienxuong.toDateString()}`);
+        // console.log('add mua thuong nine: ' + muaThuongNienThu);
+        // console.log('chuaKitoVua: ' + namPhungVu.chuaKitoVua.toDateString());
+        const leKitoVua = namPhungVu.chuaKitoVua;
+        leKitoVua.setHours(0);
+        leKitoVua.setMinutes(0);
+        leKitoVua.setSeconds(0);
+        while(
+            d.getTime() > namPhungVu.leMinhMauThanhChua.getTime() // tuan sau le minh mau thanh chua
+            && d.getTime() < leKitoVua.getTime() // truoc le ki to vua
+        ) {// truoc le kia to vua
+            // console.log('add mua thuong nine: ' + muaThuongNienThu);
+            // console.log(`${d.toDateString()} CN thu ${muaThuongNienThu}`);
+            this.addNgayLeVoDanhSach(
+                d,
+                'CN thu ' + muaThuongNienThu + ' mua thuong nien',
+                '',
+                false
+            );
+            d.setDate(d.getDate() + 7);
+            muaThuongNienThu++;
+        }
+    }
     public getFullLichPhungVuTheoNam() {
-        this.populateCacNgayLeCoDinh(); // populate
-        this.populateCalculatedDaysToCalender();
+        this.populateCacNgayLeCoDinh(); // ngay le co dinh
+        this.populateCalculatedDaysToCalender(); //  ngay le theo cong thuc
+        this.tinhchuaNhatMuaThuongNien();
         return this.fullYear;
-        // console.log(this.fullYear);
     }
 
 }
