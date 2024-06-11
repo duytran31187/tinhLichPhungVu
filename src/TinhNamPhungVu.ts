@@ -1,6 +1,6 @@
 import { tinh4TuanMuaVong, tinhNgayPhucSinh, tinhThuTuLeTro, tinhLeChuaHienLinh, tinhLeChuaKiToVua, tinhLeChuaThanhThanHienxuong, tinhLeChuaBaNgoi, tinhLeMinhMauThanhChua, tinhLeThanhTamChuaGieSu, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong, tinhLeChuaChiuPhepRua, tinhNamABC, firstSundayOfLent, secondSundayOfLent, thirdSundayOfLent, fourthSundayOfLent, fifthSundayOfLent, palmSunday, calculateTheAscentionOfTheLord, tinhLeThanhGia } from "./cacNgayLeNamPhungVu";
 import { MuaphungSinh, NamPhungVu, NgayLeData, SingleDateData, danhSachNgayLeCoDinh, nameOfDays } from "./commonData";
-import { newDate, addDate, getChristmasDay, cloneDate } from "./utils";
+import { newDate, addDate, getChristmasDay, cloneDate, buildKeyInNumberFromDate } from "./utils";
 
 export class TinhNamPhungVu
 {
@@ -30,11 +30,7 @@ export class TinhNamPhungVu
         };
     }
     private getFullYearKeyFromDate(date: Date): number {// index of this.fullYear
-        const clonedD = cloneDate(date);
-        clonedD.setHours(0);
-        clonedD.setMinutes(0);
-        clonedD.setSeconds(0);
-        return clonedD.getTime();
+        return buildKeyInNumberFromDate(date);
     }
     private addNgayLeVoDanhSach(date: Date, ngayLe: string, loaiNgayLe: string|undefined, fixed = false): void {
         let indexStr = this.getFullYearKeyFromDate(date);

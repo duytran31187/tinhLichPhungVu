@@ -56,3 +56,14 @@ export const timChuaNhatGanNhatTuNgay = (d: Date): Date | false => {
     // istanbul ignore next
     return false;
 }
+/**
+ * @param date 
+ * @returns 
+ */
+export const buildKeyInNumberFromDate = (date: Date): number {
+    const clonedD = cloneDate(date);
+    clonedD.setHours(0);
+    clonedD.setMinutes(0);
+    clonedD.setSeconds(0);
+    return clonedD.getTime();
+}
