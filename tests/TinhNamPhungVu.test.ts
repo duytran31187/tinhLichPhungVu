@@ -1,4 +1,4 @@
-import { nameOfDays, NamPhungVu, SingleDateData } from "../src/commonData";
+import { LE_NHO, LE_TRONG, nameOfDays, NamPhungVu, SingleDateData } from "../src/commonData";
 import { TinhNamPhungVu } from "../src/TinhNamPhungVu";
 import { buildKeyInNumberFromDate, newDate, tenChuaNhatThuongNienThu } from "../src/utils";
 
@@ -81,7 +81,7 @@ describe('test Full nam phung vu', () => {
             fullYear,
             newDate(year, 1, 1),
             `Thánh Ma-ri-a, Ðức Mẹ Chúa Trời`,
-            'Lễ Trọng',
+            LE_TRONG,
             true
         );
         fullYear = addExpectedDayToExpectedFullYear(
@@ -101,14 +101,14 @@ describe('test Full nam phung vu', () => {
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 14),
-            `CN 2 mua thuong nien`,
+            tenChuaNhatThuongNienThu(2),
             '',
             false
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 2, 11),
-            `CN 6 mua thuong nien`,
+            tenChuaNhatThuongNienThu(6),
             '',
             false
         );
@@ -144,7 +144,7 @@ describe('test Full nam phung vu', () => {
             fullYear,
             newDate(year, 11, 17),
             `Thánh nữ Ê-li-sa-bet nước Hung-ga-ri`,
-            'Lễ Nhớ',
+            LE_NHO,
             true
         );
         fullYear = addExpectedDayToExpectedFullYear(
@@ -158,7 +158,7 @@ describe('test Full nam phung vu', () => {
             fullYear,
             newDate(year, 11, 24),
             `Thánh An-rê Dũng Lạc và các bạn, tử đạo`,
-            'Lễ Nhớ',
+            LE_NHO,
             true
         );
 
