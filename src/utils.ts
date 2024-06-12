@@ -13,7 +13,11 @@ export function printDate(d: Date): string {
     return `${day}-${month}-${year}`;
 }
 export function newDate(year: number, month: number, day:number): Date {
-    return new Date(year + '-' + month + '-' + day);
+    const d = new Date(year + '-' + month + '-' + day);
+    d.setHours(0);
+    d.setMinutes(0);
+    d.setSeconds(0);
+    return d;
 }
 export function addDate(currentDate: Date, numOfDate: number) {
     const newDate = cloneDate(currentDate);
