@@ -1,4 +1,4 @@
-import { NamPhungVu, SingleDateData } from "../src/commonData";
+import { nameOfDays, NamPhungVu, SingleDateData } from "../src/commonData";
 import { TinhNamPhungVu } from "../src/TinhNamPhungVu";
 import { buildKeyInNumberFromDate, newDate } from "../src/utils";
 
@@ -44,7 +44,13 @@ describe('test Full nam phung vu', () => {
                         matchExpect = true;
                     }
                 });
-                expect(matchExpect).toBeTruthy();
+                try {
+                    expect(matchExpect).toBeTruthy();
+                } catch(e) {
+                    console.log(`expected ngay le ${JSON.stringify(expectedNgayLe)}`);
+                    console.log(`actualNgayLe ngay le ${JSON.stringify(actualDataByDay)}`);
+                    expect(matchExpect).toBeTruthy();
+                }
             });
         }
     }
@@ -70,18 +76,6 @@ describe('test Full nam phung vu', () => {
         const ins = new TinhNamPhungVu(year);
         const resultNamPhungVu = ins.getNamPhungVu()!;
         let fullYear: SingleDateData[] = [];
-        // fullYear[keyForDate(newDate(year, 1,1))] = { // 1-1-2024
-        //         date: newDate(year, 1,1),
-        //         cacNgayLe: [
-        //             'Thánh Ma-ri-a, Ðức Mẹ Chúa Trời'
-        //         ]
-        //     };
-        // fullYear[keyForDate(newDate(year, 1,7))] = { // 7-1-2024
-        //         date: newDate(year, 1,7),
-        //         cacNgayLe: [
-        //             'Lễ Chúa Hiển Linh'
-        //         ]
-        //     };
 
         fullYear = themExpectedngayLeVoFullYear(
             fullYear,
@@ -90,20 +84,20 @@ describe('test Full nam phung vu', () => {
             'Lễ Trọng',
             true
         );
-        // fullYear = themExpectedngayLeVoFullYear(
-        //     fullYear,
-        //     newDate(year, 1, 7),
-        //     `Thánh Rây-mun-đô Pê-nha-pho, linh mục`,
-        //     '',
-        //     true
-        // );
-        // fullYear = themExpectedngayLeVoFullYear(
-        //     fullYear,
-        //     newDate(year, 1, 7),
-        //     `Lễ Chúa Hiển Linh`,
-        //     '',
-        //     false
-        // );
+        fullYear = themExpectedngayLeVoFullYear(
+            fullYear,
+            newDate(year, 1, 7),
+            `Thánh Rây-mun-đô Pê-nha-pho, linh mục`,
+            '',
+            true
+        );
+        fullYear = themExpectedngayLeVoFullYear(
+            fullYear,
+            newDate(year, 1, 7),
+            nameOfDays['theEpiphanyOfTheLord'], // le chua hien linh
+            '',
+            false
+        );
         fullYear = themExpectedngayLeVoFullYear(
             fullYear,
             newDate(year, 1, 14),
