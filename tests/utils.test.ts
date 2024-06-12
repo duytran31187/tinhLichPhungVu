@@ -7,7 +7,13 @@ test('cloneDate', () => {
 });
 test('getChristmasDay', () => {
     const chirstmas2024 = new Date('2024-12-25');
+    chirstmas2024.setHours(0);
+    chirstmas2024.setMinutes(0);
+    chirstmas2024.setSeconds(0);
     const chirstmas2025 = new Date('2025-12-25');
+    chirstmas2025.setHours(0);
+    chirstmas2025.setMinutes(0);
+    chirstmas2025.setSeconds(0);
     expect(getChristmasDay(2024).getTime()).toEqual(chirstmas2024.getTime());
     expect(getChristmasDay(2025).getTime()).toEqual(chirstmas2025.getTime());
 });
