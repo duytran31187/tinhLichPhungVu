@@ -1,4 +1,4 @@
-import { LE_NHO, LE_TRONG, nameOfDays, NamPhungVu, SingleDateData } from "../src/commonData";
+import { LE_KINH, LE_NHO, LE_TRONG, nameOfDays, NamPhungVu, SingleDateData } from "../src/commonData";
 import { TinhNamPhungVu } from "../src/TinhNamPhungVu";
 import { buildKeyInNumberFromDate, newDate, tenChuaNhatThuongNienThu } from "../src/utils";
 
@@ -8,6 +8,11 @@ const strNamLe = "Odd (Năm lẻ)";
 const keyForDate = (date: Date): number => {
     return buildKeyInNumberFromDate(date);
 }
+describe('init', () => {
+    it('init with year is number', () => {
+        const ins = new TinhNamPhungVu(2024);
+    });
+});
 
 describe('test Full nam phung vu', () => {
     const compareNamPhungVu = (resultNamPhungVu: NamPhungVu, expectedNamPhungVu: NamPhungVu) => {
@@ -96,14 +101,14 @@ describe('test Full nam phung vu', () => {
             fullYear,
             newDate(year, 1, 7),
             `Thánh Rây-mun-đô Pê-nha-pho, linh mục`,
-            '',
+            LE_NHO,
             true
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 7),
             nameOfDays['theEpiphanyOfTheLord'], // le chua hien linh
-            '',
+            LE_TRONG,
             false
         );
         fullYear = addExpectedDayToExpectedFullYear(
@@ -201,7 +206,6 @@ describe('test Full nam phung vu', () => {
             secondSundayOfAdvent: newDate(year, 12, 8), 
             thirdSundayOfAdvent: newDate(year, 12, 15), 
             fourthSundayOfAdvent: newDate(year, 12, 22), 
-            christmas: newDate(year, 12, 25),
             leThanhGia: newDate(year, 12, 29),
         };
        compareNamPhungVu(resultNamPhungVu, expectedNamPhungVu);
@@ -224,21 +228,21 @@ describe('test Full nam phung vu', () => {
             fullYear,
             newDate(year, 1, 7),
             `Thánh Rây-mun-đô Pê-nha-pho, linh mục`,
-            '',
+            LE_NHO,
             true
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 5),
             nameOfDays['theEpiphanyOfTheLord'], // le chua hien linh
-            '',
+            LE_TRONG,
             false
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 12),
             nameOfDays['leChuaChiuPhepRua'], // le chua hien linh
-            '',
+            LE_KINH,
             false
         );
         fullYear = addExpectedDayToExpectedFullYear(
@@ -364,7 +368,6 @@ describe('test Full nam phung vu', () => {
             secondSundayOfAdvent: newDate(year, 12, 7), 
             thirdSundayOfAdvent: newDate(year, 12, 14), 
             fourthSundayOfAdvent: newDate(year, 12, 21), 
-            christmas: newDate(year, 12, 25),
             leThanhGia: newDate(year, 12, 28),
         };
        compareNamPhungVu(resultNamPhungVu, expectedNamPhungVu);
@@ -404,7 +407,6 @@ describe('test Full nam phung vu', () => {
             secondSundayOfAdvent: newDate(year, 12, 6), 
             thirdSundayOfAdvent: newDate(year, 12, 13), 
             fourthSundayOfAdvent: newDate(year, 12, 20), 
-            christmas: newDate(year, 12, 25),
             leThanhGia: newDate(year, 12, 27),
         };
        compareNamPhungVu(resultNamPhungVu, expectedNamPhungVu);

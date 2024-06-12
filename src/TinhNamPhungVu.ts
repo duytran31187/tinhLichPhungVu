@@ -1,6 +1,6 @@
 import { tinh4TuanMuaVong, tinhNgayPhucSinh, tinhThuTuLeTro, tinhLeChuaHienLinh, tinhLeChuaKiToVua, tinhLeChuaThanhThanHienxuong, tinhLeChuaBaNgoi, tinhLeMinhMauThanhChua, tinhLeThanhTamChuaGieSu, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong, tinhLeChuaChiuPhepRua, tinhNamABC, firstSundayOfLent, secondSundayOfLent, thirdSundayOfLent, fourthSundayOfLent, fifthSundayOfLent, palmSunday, calculateTheAscentionOfTheLord, tinhLeThanhGia } from "./cacNgayLeNamPhungVu";
-import { MuaphungSinh, NamPhungVu, NgayLeData, SingleDateData, danhSachNgayLeCoDinh, nameOfDays } from "./commonData";
-import { newDate, addDate, getChristmasDay, cloneDate, buildKeyInNumberFromDate, tenChuaNhatThuongNienThu } from "./utils";
+import { LE_KINH, LE_NHO, LE_TRONG, MuaphungSinh, NamPhungVu, NgayLeData, SingleDateData, danhSachNgayLeCoDinh, nameOfDays } from "./commonData";
+import { newDate, addDate, cloneDate, buildKeyInNumberFromDate, tenChuaNhatThuongNienThu } from "./utils";
 
 export class TinhNamPhungVu {
     private year: number;
@@ -8,7 +8,6 @@ export class TinhNamPhungVu {
     private pThuTuLeTro: Date | undefined;
     private pNgayLeChuaHienLinh: Date | undefined;
     private pLeThanhGia: Date | undefined;
-    private pNgayLeGiangSinh: Date | undefined;
     private p4TuanMuaVong: MuaphungSinh | undefined;
     private namPhungVu: NamPhungVu | undefined; // cac ngay le tinh theo cong thu
     private fullYear: SingleDateData[] = []; // full 365 ngay
@@ -84,12 +83,6 @@ export class TinhNamPhungVu {
         }
         return this.pLeThanhGia;
     }
-    private get ngayLeGiangSinh(): Date {
-        if (!this.pNgayLeGiangSinh) {
-            this.pNgayLeGiangSinh = getChristmasDay(this.year);
-        }
-        return this.pNgayLeGiangSinh;
-    }
 
     private get bonTuanMuaVong(): MuaphungSinh {
         if (!this.p4TuanMuaVong) {
@@ -118,8 +111,6 @@ export class TinhNamPhungVu {
             year: this.year,
             yearABC: tinhNamABC(this.year),
             oddEven: this.year % 2 == 0 ? 'Even ( Năm chẵn)' : 'Odd (Năm lẻ)',
-            // leDucMeChuaTroi: newDate(this.year, 1,1),
-            // dangchuaGiesuTrongDenThanh: newDate(this.year, 2, 2),
             theEpiphanyOfTheLord: this.ngayLeChuaHienLinh,
             firstOrdinarySundayAfterPentecostSunday: chuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong,
             leChuaChiuPhepRua: leChuaChiuPhepRua,
@@ -146,7 +137,6 @@ export class TinhNamPhungVu {
             secondSundayOfAdvent: tuanMuaVong.week2,
             thirdSundayOfAdvent: tuanMuaVong.week3,
             fourthSundayOfAdvent: tuanMuaVong.week4,
-            christmas: this.ngayLeGiangSinh,
             leThanhGia: this.ngayLeThanhGia,
         }
     }
@@ -160,13 +150,25 @@ export class TinhNamPhungVu {
 
     private populateCalculatedDaysToCalender(): void {
         const namphungVuIns = this.getNamPhungVu()!;
+        const LeTrong = [
+            'theEpiphanyOfTheLord'
+        ];
+        const LeKinh = [
+            'leChuaChiuPhepRua'
+        ];
         for (let key in namphungVuIns) {
             if (namphungVuIns.hasOwnProperty(key)) {
                 const val = namphungVuIns[key as keyof NamPhungVu];
                 const nameOfDate = nameOfDays[key as keyof NamPhungVu];
                 if (val instanceof Date) {
                     if (nameOfDays.hasOwnProperty(key)) {
-                        this.addNgayLeVoDanhSach(val, nameOfDate, '', false);
+                        let loaiNgayLe = '';
+                        if (LeTrong.includes(key)) {
+                            loaiNgayLe = LE_TRONG;
+                        } else if (LeKinh.includes(key)) {
+                            loaiNgayLe = LE_KINH
+                        }
+                        this.addNgayLeVoDanhSach(val, nameOfDate, loaiNgayLe, false);
                     } else { /* istanbul ignore next */
                         throw new Error('khong the tim thay ten ngay le');
                     }
@@ -176,7 +178,7 @@ export class TinhNamPhungVu {
     }
     private setSameTimeOfDate(date: Date): Date {
         const d = cloneDate(date);
-        d.setHours(0);
+        d.setHours(1);
         d.setMinutes(0);
         d.setSeconds(0);
         return d;
