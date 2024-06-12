@@ -1,6 +1,6 @@
 import { tinh4TuanMuaVong, tinhNgayPhucSinh, tinhThuTuLeTro, tinhLeChuaHienLinh, tinhLeChuaKiToVua, tinhLeChuaThanhThanHienxuong, tinhLeChuaBaNgoi, tinhLeMinhMauThanhChua, tinhLeThanhTamChuaGieSu, tinhChuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong, tinhLeChuaChiuPhepRua, tinhNamABC, firstSundayOfLent, secondSundayOfLent, thirdSundayOfLent, fourthSundayOfLent, fifthSundayOfLent, palmSunday, calculateTheAscentionOfTheLord, tinhLeThanhGia } from "./cacNgayLeNamPhungVu";
 import { MuaphungSinh, NamPhungVu, NgayLeData, SingleDateData, danhSachNgayLeCoDinh, nameOfDays } from "./commonData";
-import { newDate, addDate, getChristmasDay, cloneDate, buildKeyInNumberFromDate } from "./utils";
+import { newDate, addDate, getChristmasDay, cloneDate, buildKeyInNumberFromDate, tenChuaNhatThuongNienThu } from "./utils";
 
 export class TinhNamPhungVu {
     private year: number;
@@ -189,7 +189,7 @@ export class TinhNamPhungVu {
         }
     }
     private nameChuaNhaMuaThuongNienThu(n: number): string {
-        return `CN ${n} mua thuong nien`;
+       return tenChuaNhatThuongNienThu(n);
     }
     /**
      * goi sau khi da populate het cac ngay le co dinh, theo cong thu
@@ -201,6 +201,9 @@ export class TinhNamPhungVu {
         const leChuaHienLinh = namPhungVu.theEpiphanyOfTheLord;
         let d = cloneDate(leChuaHienLinh);
         d.setDate(d.getDate() + 7); // CN dau tien sau le hien linh
+        if(d.toDateString() == namPhungVu.leChuaChiuPhepRua.toDateString()) {
+            d.setDate(d.getDate() + 7); 
+        }
         const thu4LeTro = namPhungVu.ashWed;
         let muaThuongNienThu = 2;
         while (d.getTime() < thu4LeTro.getTime()) {
@@ -216,20 +219,27 @@ export class TinhNamPhungVu {
         // CN thu 1 cua nam là 
         // mua thuong nien lan 2: sau le minh mau thanh chua va truoc le Ki To Vua
         muaThuongNienThu = namPhungVu.firstOrdinarySundayAfterPentecostSunday;
-        d = cloneDate(namPhungVu.leMinhMauThanhChua);
+        d = cloneDate(namPhungVu.pentecostSunday);
         d = this.setSameTimeOfDate(d);
         d.setDate(d.getDate() + 7);
         const leKitoVua = this.setSameTimeOfDate(namPhungVu.chuaKitoVua);
         while (
-            d.getTime() > namPhungVu.leMinhMauThanhChua.getTime() // tuan sau le minh mau thanh chua
+            d.getTime() > namPhungVu.pentecostSunday.getTime() // tuan sau le chua thanh than hien xuong
             && d.getTime() < leKitoVua.getTime() // truoc le ki to vua
         ) {// truoc le kia to vua
-            this.addNgayLeVoDanhSach(
-                d,
-                this.nameChuaNhaMuaThuongNienThu(muaThuongNienThu),
-                '',
-                false
-            );
+            // console.log(`${d.toDateString()} la ${this.nameChuaNhaMuaThuongNienThu(muaThuongNienThu)}`);
+            if(
+                d.toDateString() !== namPhungVu.leChuaBaNgoi.toDateString()
+                && d.toDateString() !== namPhungVu.leMinhMauThanhChua.toDateString()
+                &&  d.toDateString() !== newDate(this.year, 6,29).toDateString() // le thanh phao lo, phe ro 
+            ) { 
+                this.addNgayLeVoDanhSach(
+                    d,
+                    this.nameChuaNhaMuaThuongNienThu(muaThuongNienThu),
+                    '',
+                    false
+                );
+            }
             d.setDate(d.getDate() + 7);
             muaThuongNienThu++;
         }
