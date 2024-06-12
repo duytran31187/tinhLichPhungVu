@@ -175,7 +175,6 @@ describe('test Full nam phung vu', () => {
             yearABC: 'B',
             oddEven: strNamChan,
             // leDucMeChuaTroi: newDate(year,1,1),
-            dangchuaGiesuTrongDenThanh: newDate(year,2,2),
             theEpiphanyOfTheLord: newDate(year, 1 , 7), //lechuahienlinh
             firstOrdinarySundayAfterPentecostSunday: 8,
             leChuaChiuPhepRua: newDate(year, 1, 8),
@@ -339,8 +338,6 @@ describe('test Full nam phung vu', () => {
             year: year,
             yearABC: 'C',
             oddEven: strNamLe,
-            // leDucMeChuaTroi: newDate(year,1,1),
-            dangchuaGiesuTrongDenThanh: newDate(year,2,2),
             theEpiphanyOfTheLord: newDate(year, 1 , 5), //lechuahienlinh
             firstOrdinarySundayAfterPentecostSunday: 11,
             leChuaChiuPhepRua: newDate(year, 1, 12),
@@ -381,8 +378,6 @@ describe('test Full nam phung vu', () => {
             year: year,
             yearABC: 'A',
             oddEven: strNamChan,
-            // leDucMeChuaTroi: newDate(year,1,1),
-            dangchuaGiesuTrongDenThanh: newDate(year,2,2),
             theEpiphanyOfTheLord: newDate(year, 1 , 4), //lechuahienlinh
             firstOrdinarySundayAfterPentecostSunday: 9,
             leChuaChiuPhepRua: newDate(year, 1, 11),

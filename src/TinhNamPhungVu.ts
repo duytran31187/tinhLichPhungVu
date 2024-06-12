@@ -119,7 +119,7 @@ export class TinhNamPhungVu {
             yearABC: tinhNamABC(this.year),
             oddEven: this.year % 2 == 0 ? 'Even ( Năm chẵn)' : 'Odd (Năm lẻ)',
             // leDucMeChuaTroi: newDate(this.year, 1,1),
-            dangchuaGiesuTrongDenThanh: newDate(this.year, 2, 2),
+            // dangchuaGiesuTrongDenThanh: newDate(this.year, 2, 2),
             theEpiphanyOfTheLord: this.ngayLeChuaHienLinh,
             firstOrdinarySundayAfterPentecostSunday: chuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong,
             leChuaChiuPhepRua: leChuaChiuPhepRua,

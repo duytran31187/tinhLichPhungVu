@@ -16,7 +16,6 @@ export type NamPhungVu = {
     yearABC: string,
     oddEven: string,
     leDucMeChuaTroi?: Date,
-    dangchuaGiesuTrongDenThanh: Date
     theEpiphanyOfTheLord: Date,
     leChuaChiuPhepRua: Date,
     ashWed: Date,
@@ -76,7 +75,6 @@ export const nameOfDays = {
     chuaKitoVua: 'Lễ Chúa KiTo Vua',
     firstOrdinarySundayAfterPentecostSunday: 'Chua Nhat Thuong Nien sau Le Chua Thanh than hien xuong',
     leDucMeChuaTroi: 'Thánh Ma-ri-a, Ðức Mẹ Chúa Trời',
-    dangchuaGiesuTrongDenThanh: 'Dâng Chúa Giê-su Trong Đền Thánh',
     leChuaBaNgoi: 'Lễ Chúa Ba Ngôi',
     leMinhMauThanhChua: 'Lễ Mình Máu Thánh Chúa',
     leThanhTamChuaGieSu: 'Lễ Thánh Tâm Chúa Giê Su',
@@ -187,7 +185,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Dâng Chúa Giê-su Trong Đền Thánh',
         date: newDate(year, 2, 2),
-        type: 'Le Kính',
+        type: LE_KINH,
         fixed: true,
       },
       {
