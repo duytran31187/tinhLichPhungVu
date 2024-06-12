@@ -1,6 +1,6 @@
 import { nameOfDays, NamPhungVu, SingleDateData } from "../src/commonData";
 import { TinhNamPhungVu } from "../src/TinhNamPhungVu";
-import { buildKeyInNumberFromDate, newDate } from "../src/utils";
+import { buildKeyInNumberFromDate, newDate, tenChuaNhatThuongNienThu } from "../src/utils";
 
 const strNamChan = 'Even ( Năm chẵn)';
 const strNamLe = "Odd (Năm lẻ)";
@@ -54,7 +54,7 @@ describe('test Full nam phung vu', () => {
             });
         }
     }
-    const themExpectedngayLeVoFullYear = (fullYear: SingleDateData[], date: Date, name: string, type: string, fixed: boolean): SingleDateData[] => {
+    const addExpectedDayToExpectedFullYear = (fullYear: SingleDateData[], date: Date, name: string, type: string, fixed: boolean): SingleDateData[] => {
         if (!fullYear[keyForDate(date)]) {
             fullYear[keyForDate(date)] = {
                 date: date,
@@ -77,84 +77,84 @@ describe('test Full nam phung vu', () => {
         const resultNamPhungVu = ins.getNamPhungVu()!;
         let fullYear: SingleDateData[] = [];
 
-        fullYear = themExpectedngayLeVoFullYear(
+        fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 1),
             `Thánh Ma-ri-a, Ðức Mẹ Chúa Trời`,
             'Lễ Trọng',
             true
         );
-        fullYear = themExpectedngayLeVoFullYear(
+        fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 7),
             `Thánh Rây-mun-đô Pê-nha-pho, linh mục`,
             '',
             true
         );
-        fullYear = themExpectedngayLeVoFullYear(
+        fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 7),
             nameOfDays['theEpiphanyOfTheLord'], // le chua hien linh
             '',
             false
         );
-        fullYear = themExpectedngayLeVoFullYear(
+        fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 14),
             `CN 2 mua thuong nien`,
             '',
             false
         );
-        fullYear = themExpectedngayLeVoFullYear(
+        fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 2, 11),
             `CN 6 mua thuong nien`,
             '',
             false
         );
-        fullYear = themExpectedngayLeVoFullYear(
+        fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 2, 11),
             `Đức Mẹ Lộ-đức`,
             '',
             true
         );
-        fullYear = themExpectedngayLeVoFullYear(
+        fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 6, 9),
-            `CN 8 mua thuong nien`,
+            tenChuaNhatThuongNienThu(8),
             '',
             false
         );
-        fullYear = themExpectedngayLeVoFullYear(
+        fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 6, 16),
-            `CN 9 mua thuong nien`,
+            tenChuaNhatThuongNienThu(9),
             '',
             false
         );
-        fullYear = themExpectedngayLeVoFullYear(
+        fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 11, 17),
-            `CN 31 mua thuong nien`,
+            tenChuaNhatThuongNienThu(31),
             '',
             false
         );
-        fullYear = themExpectedngayLeVoFullYear(
+        fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 11, 17),
             `Thánh nữ Ê-li-sa-bet nước Hung-ga-ri`,
             'Lễ Nhớ',
             true
         );
-        fullYear = themExpectedngayLeVoFullYear(
+        fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 11, 24),
-            `Lễ Chúa KiTo Vua`,
+            nameOfDays.chuaKitoVua,
             '',
             false
         );
-        fullYear = themExpectedngayLeVoFullYear(
+        fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 11, 24),
             `Thánh An-rê Dũng Lạc và các bạn, tử đạo`,

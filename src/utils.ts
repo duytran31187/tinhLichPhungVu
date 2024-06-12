@@ -71,3 +71,6 @@ export const buildKeyInNumberFromDate = (date: Date): number => {
     clonedD.setSeconds(0);
     return clonedD.getTime();
 }
+export const tenChuaNhatThuongNienThu = (n: number): string => {
+    return `CN ${n} mua thuong nien`;
+}
