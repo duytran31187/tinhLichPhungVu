@@ -110,7 +110,7 @@ export class TinhNamPhungVu {
             pentecostSunday
         );
         const leChuaChiuPhepRua = tinhLeChuaChiuPhepRua(this.year);
-        if (!(leChuaChiuPhepRua instanceof Date)) { // istanbul ignore next
+        if (!(leChuaChiuPhepRua instanceof Date)) { /* istanbul ignore next */
             return false;
         }
 
@@ -167,7 +167,7 @@ export class TinhNamPhungVu {
                 if (val instanceof Date) {
                     if (nameOfDays.hasOwnProperty(key)) {
                         this.addNgayLeVoDanhSach(val, nameOfDate, '', false);
-                    } else {
+                    } else { /* istanbul ignore next */
                         throw new Error('khong the tim thay ten ngay le');
                     }
                 }
