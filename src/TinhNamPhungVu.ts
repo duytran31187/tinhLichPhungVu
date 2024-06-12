@@ -2,8 +2,7 @@ import { tinh4TuanMuaVong, tinhNgayPhucSinh, tinhThuTuLeTro, tinhLeChuaHienLinh,
 import { MuaphungSinh, NamPhungVu, NgayLeData, SingleDateData, danhSachNgayLeCoDinh, nameOfDays } from "./commonData";
 import { newDate, addDate, getChristmasDay, cloneDate, buildKeyInNumberFromDate } from "./utils";
 
-export class TinhNamPhungVu
-{
+export class TinhNamPhungVu {
     private year: number;
     private pLePhucSinh: Date | undefined; // start with p => mean property
     private pThuTuLeTro: Date | undefined;
@@ -19,9 +18,9 @@ export class TinhNamPhungVu
     constructor(year: number) {
         this.year = +year; //make sure is number
         /// init danh sach
-        let date  = newDate(this.year, 1, 1);
-        const endDate = newDate(this.year+1, 1, 1);
-        while(date < endDate) {
+        let date = newDate(this.year, 1, 1);
+        const endDate = newDate(this.year + 1, 1, 1);
+        while (date < endDate) {
             if (!this.firstSundayOfYear && date.getDay() == 0) {
                 this.firstSundayOfYear = cloneDate(date);
             }
@@ -29,10 +28,11 @@ export class TinhNamPhungVu
             date.setDate(date.getDate() + 1);
         };
     }
+
     private getFullYearKeyFromDate(date: Date): number {// index of this.fullYear
         return buildKeyInNumberFromDate(date);
     }
-    private addNgayLeVoDanhSach(date: Date, ngayLe: string, loaiNgayLe: string|undefined, fixed = false): void {
+    private addNgayLeVoDanhSach(date: Date, ngayLe: string, loaiNgayLe: string | undefined, fixed = false): void {
         let indexStr = this.getFullYearKeyFromDate(date);
         const singleDateData: NgayLeData = {
             name: ngayLe,
@@ -41,7 +41,7 @@ export class TinhNamPhungVu
         };
         if (!this.fullYear[indexStr]) { // init data by date
             let ngayLeData: SingleDateData = {
-                date: newDate(this.year, date.getMonth()+ 1, date.getDate()),
+                date: newDate(this.year, date.getMonth() + 1, date.getDate()),
                 cacNgayLe: [],
             };
             this.fullYear[indexStr] = ngayLeData;
@@ -51,7 +51,7 @@ export class TinhNamPhungVu
             this.fullYear[indexStr].cacNgayLe.push(singleDateData);
         }
     }
-    
+
 
     private tinhNgayPhucSinh(): Date {
         return tinhNgayPhucSinh(this.year) as Date;
@@ -98,8 +98,7 @@ export class TinhNamPhungVu
         return this.p4TuanMuaVong!;
     }
 
-    private tinhLichPhungVu()
-    {
+    private tinhLichPhungVu() {
         const tuanMuaVong = this.bonTuanMuaVong;
         const leChuaKiToVua = tinhLeChuaKiToVua(tuanMuaVong.week1);
         const pentecostSunday = tinhLeChuaThanhThanHienxuong(this.ngayLePhucSinh);
@@ -120,7 +119,7 @@ export class TinhNamPhungVu
             yearABC: tinhNamABC(this.year),
             oddEven: this.year % 2 == 0 ? 'Even ( Năm chẵn)' : 'Odd (Năm lẻ)',
             // leDucMeChuaTroi: newDate(this.year, 1,1),
-            dangchuaGiesuTrongDenThanh: newDate(this.year,2,2),
+            dangchuaGiesuTrongDenThanh: newDate(this.year, 2, 2),
             theEpiphanyOfTheLord: this.ngayLeChuaHienLinh,
             firstOrdinarySundayAfterPentecostSunday: chuaNhatThuongNienDauTienSauLeChuaThanhThanHienXuong,
             leChuaChiuPhepRua: leChuaChiuPhepRua,
@@ -151,7 +150,7 @@ export class TinhNamPhungVu
             leThanhGia: this.ngayLeThanhGia,
         }
     }
-    
+
     public getNamPhungVu() {
         if (!this.namPhungVu) {
             this.tinhLichPhungVu();
@@ -163,7 +162,7 @@ export class TinhNamPhungVu
         const namphungVuIns = this.getNamPhungVu()!;
         for (let key in namphungVuIns) {
             if (namphungVuIns.hasOwnProperty(key)) {
-                const val =  namphungVuIns[key as keyof NamPhungVu];
+                const val = namphungVuIns[key as keyof NamPhungVu];
                 const nameOfDate = nameOfDays[key as keyof NamPhungVu];
                 if (val instanceof Date) {
                     if (nameOfDays.hasOwnProperty(key)) {
@@ -175,12 +174,22 @@ export class TinhNamPhungVu
             }
         }
     }
+    private setSameTimeOfDate(date: Date): Date {
+        const d = cloneDate(date);
+        d.setHours(0);
+        d.setMinutes(0);
+        d.setSeconds(0);
+        return d;
+    }
     private populateCacNgayLeCoDinh(): void {
         const LeCoDinh = danhSachNgayLeCoDinh(this.year);
         let d: NgayLeData;
         for (d of LeCoDinh) {
             this.addNgayLeVoDanhSach(d.date!, d.name, d.type, d.fixed);
         }
+    }
+    private nameChuaNhaMuaThuongNienThu(n: number): string {
+        return `CN ${n} mua thuong nien`;
     }
     /**
      * goi sau khi da populate het cac ngay le co dinh, theo cong thu
@@ -190,15 +199,14 @@ export class TinhNamPhungVu
         // CN đau tien cua nam
         const namPhungVu = this.namPhungVu!;
         const leChuaHienLinh = namPhungVu.theEpiphanyOfTheLord;
-        const leChuaThanhThanHienxuong = namPhungVu.pentecostSunday;
         let d = cloneDate(leChuaHienLinh);
         d.setDate(d.getDate() + 7); // CN dau tien sau le hien linh
         const thu4LeTro = namPhungVu.ashWed;
         let muaThuongNienThu = 2;
-        while(d.getTime() < thu4LeTro.getTime()) {
+        while (d.getTime() < thu4LeTro.getTime()) {
             this.addNgayLeVoDanhSach(
                 d,
-                'CN thu ' + muaThuongNienThu + ' mua thuong nien',
+                this.nameChuaNhaMuaThuongNienThu(muaThuongNienThu),
                 '',
                 false
             );
@@ -206,29 +214,19 @@ export class TinhNamPhungVu
             muaThuongNienThu++;
         }
         // CN thu 1 cua nam là 
-        // mua thuong nien lan 2: sau le chua thanh than hien xuong
+        // mua thuong nien lan 2: sau le minh mau thanh chua va truoc le Ki To Vua
         muaThuongNienThu = namPhungVu.firstOrdinarySundayAfterPentecostSunday;
         d = cloneDate(namPhungVu.leMinhMauThanhChua);
-        d.setHours(0);
-        d.setMinutes(0);
-        d.setSeconds(0);
-        d.setDate(d.getDate()+7);
-        // console.log(`le chus thanh than ${leChuaThanhThanHienxuong.toDateString()}`);
-        // console.log('add mua thuong nine: ' + muaThuongNienThu);
-        // console.log('chuaKitoVua: ' + namPhungVu.chuaKitoVua.toDateString());
-        const leKitoVua = namPhungVu.chuaKitoVua;
-        leKitoVua.setHours(0);
-        leKitoVua.setMinutes(0);
-        leKitoVua.setSeconds(0);
-        while(
+        d = this.setSameTimeOfDate(d);
+        d.setDate(d.getDate() + 7);
+        const leKitoVua = this.setSameTimeOfDate(namPhungVu.chuaKitoVua);
+        while (
             d.getTime() > namPhungVu.leMinhMauThanhChua.getTime() // tuan sau le minh mau thanh chua
             && d.getTime() < leKitoVua.getTime() // truoc le ki to vua
         ) {// truoc le kia to vua
-            // console.log('add mua thuong nine: ' + muaThuongNienThu);
-            // console.log(`${d.toDateString()} CN thu ${muaThuongNienThu}`);
             this.addNgayLeVoDanhSach(
                 d,
-                'CN thu ' + muaThuongNienThu + ' mua thuong nien',
+                this.nameChuaNhaMuaThuongNienThu(muaThuongNienThu),
                 '',
                 false
             );
