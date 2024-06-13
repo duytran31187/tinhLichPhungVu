@@ -309,21 +309,25 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Lu-i đơ Mông-pho, linh mục',
         date: newDate(year, 4, 28),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Phê-rô Sa-nen, linh mục, tử đạo',
         date: newDate(year, 4, 28),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Ca-ta-ri-na Si-ê-na, trinh nữ, tiến sĩ Hội Thánh',
         date: newDate(year, 4, 29),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Pi-ô V, giáo hoàng',
         date: newDate(year, 4, 30),
+        type: LE_NHO,
         fixed: true
       },
       {

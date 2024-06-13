@@ -246,10 +246,29 @@ export class TinhNamPhungVu {
             muaThuongNienThu++;
         }
     }
+    private populateTuanBatNhat() {
+        // t2 - t7 sau ngay phung sinh
+        const namPhungVu = this.namPhungVu!;
+        const d = cloneDate(namPhungVu.easterSunday);
+        // t2 tuan bat nhat
+        let batNhaThu = 1;
+        do {
+            d.setDate(d.getDate()+1);
+            batNhaThu++;
+            this.addNgayLeVoDanhSach(
+                d,
+                `Thu ${batNhaThu} trong Tuần Bát Nhật Lễ Phục Sinh`,
+                LE_TRONG,
+                false
+            );
+        } while (batNhaThu < 8);
+        
+    }
     public getFullLichPhungVuTheoNam() {
         this.populateCacNgayLeCoDinh(); // ngay le co dinh
         this.populateCalculatedDaysToCalender(); //  ngay le theo cong thuc
         this.tinhchuaNhatMuaThuongNien();
+        this.populateTuanBatNhat();
         return this.fullYear;
     }
 
