@@ -159,7 +159,8 @@ export class TinhNamPhungVu {
             'leThanhTamChuaGieSu'
         ];
         const LeKinh = [
-            'leChuaChiuPhepRua'
+            'leChuaChiuPhepRua',
+            'leThanhGia'
         ];
         for (let key in namphungVuIns) {
             if (namphungVuIns.hasOwnProperty(key)) {
@@ -269,11 +270,30 @@ export class TinhNamPhungVu {
         } while (batNhaThu < 8);
         
     }
+    private populateTuanThanh() {
+        // t2 - t7 sau ngay le la
+        const namPhungVu = this.namPhungVu!;
+        const d = cloneDate(namPhungVu.palmSunday);
+        // t2 tuan bat nhat
+        let thu = 1;
+        do {
+            d.setDate(d.getDate()+1);
+            thu++;
+            this.addNgayLeVoDanhSach(
+                d,
+                `Thu ${thu} Tuần Thánh`,
+                '',
+                false
+            );
+        } while (thu < 8);
+        
+    }
     public getFullLichPhungVuTheoNam() {
         this.populateCacNgayLeCoDinh(); // ngay le co dinh
         this.populateCalculatedDaysToCalender(); //  ngay le theo cong thuc
         this.tinhchuaNhatMuaThuongNien();
         this.populateTuanBatNhat();
+        this.populateTuanThanh();
         return this.fullYear;
     }
 
