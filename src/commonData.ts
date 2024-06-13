@@ -477,11 +477,13 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh nữ Ê-li-sa-bét Bồ-đào-nha',
         date: newDate(year, 7, 4),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Augustinô Triệu Vinh, linh mục và các bạn, tử đạo',
         date: newDate(year, 7,9),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -493,6 +495,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Ca-mi-lô Len-li, linh mục',
         date: newDate(year, 7, 14),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -504,11 +507,13 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Đức Mẹ núi Cat-minh',
         date: newDate(year, 7, 16),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Lô-ren-xô Bơ-rin-đi-xi, linh mục, tiến sĩ Hội Thánh',
         date: newDate(year, 7, 21),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -520,11 +525,13 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Bi-ghit-ta, nữ tu',
         date: newDate(year, 7, 23),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Sa-ben Mac-lup, linh mục',
         date: newDate(year, 7, 24),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -548,6 +555,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Phê-rô Kim Ngôn, giám mục, tiến sĩ Hội Thánh',
         date: newDate(year, 7, 30),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -571,6 +579,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Cung hiến thánh đường Đức Ma-ri-a',
         date: newDate(year, 8, 5),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -582,11 +591,13 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Ga-ê-ta-nô, linh mục',
         date: newDate(year, 8, 7),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Xit-tô II, giáo hoàng và các bạn, tử đạo',
         date: newDate(year, 8, 7),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -598,17 +609,19 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Cờ-la-ra, trinh nữ',
         date: newDate(year, 8, 11),
-        type: 'Lê Nhớ',
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Gio-an-na Phan-xi-ca Săng-tan, nữ tu',
         date: newDate(year, 8, 12),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Pôn-xi-a-nô, giáo hoàng, và thánh Hip-pô-li-tô, linh mục, tử đạo',
         date: newDate(year, 8, 13),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -620,12 +633,13 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Đức Ma-ri-a Lên Trời',
         date: newDate(year, 8, 15),
-        type: 'Lê Trọng',
+        type: LE_TRONG,
         fixed: true
       },
       {
         name: 'Thánh Gio-an Ơ-đơ, linh mục',
         date: newDate(year, 8, 19),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -649,11 +663,13 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Giu-se Ca-la-xan, linh mục',
         date: newDate(year, 8, 25),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Lu-y',
         date: newDate(year, 8, 25),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -675,11 +691,6 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
         fixed: true
       },
       {
-        name: 'Ngày Quốc Khánh',
-        date: newDate(year, 9, 2),
-        fixed: true
-      },
-      {
         name: 'Thánh Grê-gô-ri-ô Cả, giáo hoàng, tiến sĩ Hội Thánh',
         date: newDate(year, 9, 3),
         type: LE_NHO,
@@ -688,6 +699,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Tê-rê-xa Cal-cut-ta, nữ tu',
         date: newDate(year, 9, 5),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -699,11 +711,13 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Phê-rô Cơ-la-ve, linh mục',
         date: newDate(year, 9, 9),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Danh Rất Thánh trinh nữ Ma-ri-a',
         date: newDate(year, 9, 12),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -727,16 +741,19 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Rô-be-tô Be-la-mi-nô, giám mục, tiến sĩ Hội Thánh',
         date: newDate(year, 9, 17),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh nữ Hildegarde thành Bingen, trinh nữ, tiến sĩ Hội Thánh',
         date: newDate(year, 9, 17),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Gia-nu-a-ri-ô, giám mục, tử đạo',
         date: newDate(year, 9, 19),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -754,6 +771,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Cót-ma và thánh Đa-mi-a-nô, tử đạo',
         date: newDate(year, 9, 26),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -795,6 +813,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Bơ-ru-nô, linh mục',
         date: newDate(year, 10, 6),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -806,16 +825,19 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Gio-an Lê-ô-nác-đi, linh mục',
         date: newDate(year, 10, 9),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Đi-ô-ni-xi-ô, giám mục và các bạn, tử đạo',
         date: newDate(year, 10, 9),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Ca-lít-tô I, giáo hoàng, tử đạo',
         date: newDate(year, 10, 14),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -833,6 +855,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Ma-ga-ri-ta Ma-ri-a A-la-cốc, trinh nữ',
         date: newDate(year, 10, 16),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -844,7 +867,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name : 'Thánh Lu-ca, tác giả Sách Tin Mừng',
         date: newDate(year, 10, 18),
-        type: LE_NHO,
+        type: LE_KINH,
         fixed: true,
       },
       {
@@ -856,16 +879,19 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Gio-an thành Ca-pét-ra-nô, linh mục',
         date: newDate(year, 10, 23),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh An-tôn Ma-ri-a Cơ-la-rét, giám mục',
         date: newDate(year, 10, 24),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Si-mon và thánh Giu-đa, tông đồ',
         date: newDate(year, 10, 28),
+        type: LE_KINH,
         fixed: true
       },
       {
@@ -940,6 +966,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Ca-ta-ri-na A-lê-xan-ri-a, trinh nữ, tử đạo',
         date: newDate(year, 11, 25),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -957,31 +984,37 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Gioan Đa-mát, linh mục, tiến sĩ Hội Thánh',
         date: newDate(year, 12, 4),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Gio-an Đi-ê-gô',
         date: newDate(year, 12, 9),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Đức trinh nữ Ma-ri-a Lô-rê-tô',
         date: newDate(year, 12, 10),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Đa-ma-xô I, giáo hoàng',
         date: newDate(year, 12, 11),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Đức trinh nữ Ma-ri-a Goa-đa-lu-pê',
         date: newDate(year, 12, 12),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Gio-an thành Kê-ty, linh mục',
         date: newDate(year, 12, 23),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -992,7 +1025,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Chúa Giáng Sinh',
         date: newDate(year, 12, 25),
-        type: 'Lê Trọng',
+        type: LE_TRONG,
         fixed: true
       },
       {
@@ -1016,11 +1049,13 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Tô-ma Béc-két, giám mục, tử đạo',
         date: newDate(year, 12,29),
+        type: LE_NHO,
         fixed: true
       },
       {
         name: 'Thánh Xin-vet-tê I, giáo hoàng',
         date: newDate(year, 12, 31),
+        type: LE_NHO,
         fixed: true
       }
     ]
