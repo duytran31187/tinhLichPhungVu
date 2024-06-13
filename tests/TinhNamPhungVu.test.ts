@@ -99,6 +99,20 @@ describe('test Full nam phung vu', () => {
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
+            newDate(year, 1, 2),
+            `Thánh Ba-xi-li-ô Cả và thánh Ghê-gô-ri-ô Na-di-en, giám mục, tiến sĩ Hội Thánh`,
+            LE_NHO,
+            true
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 3),
+            `Kinh Danh rất thánh Chúa Giê-su`,
+            LE_NHO,
+            true
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
             newDate(year, 1, 7),
             `Thánh Rây-mun-đô Pê-nha-pho, linh mục`,
             LE_NHO,
@@ -113,11 +127,12 @@ describe('test Full nam phung vu', () => {
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
-            newDate(year, 1, 14),
-            tenChuaNhatThuongNienThu(2),
-            '',
+            newDate(year, 1, 8),
+            nameOfDays['leChuaChiuPhepRua'], // leChuaChiuPhepRua
+            LE_KINH,
             false
         );
+        
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 2, 11),
@@ -132,6 +147,113 @@ describe('test Full nam phung vu', () => {
             '',
             true
         );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 13),
+            `Thánh Hi-la-ri-ô, giám mục, tiến sĩ Hội Thánh`,
+            LE_NHO,
+            true
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 14),
+            tenChuaNhatThuongNienThu(2),
+            '',
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 17),
+            `Thánh An-tôn, viện phụ`,
+            LE_NHO,
+            true
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 20),
+            `Thánh Pha-bi-a-nô, giáo hoàng, tử đạo`,
+            LE_NHO,
+            true
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 20),
+            `Thánh Xê-bát-ti-a-nô, tử đạo`,
+            LE_NHO,
+            true
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 21),
+            `Thánh A-nê, trinh nữ, tử đạo`,
+            LE_NHO,
+            true
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 21),
+            tenChuaNhatThuongNienThu(3),
+            '',
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 22),
+            'Thánh Vinh-sơn, phó tế, tử đạo',
+            LE_NHO,
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 24),
+            'Thánh Phan-xi-cô đơ Xan, giám mục, tiến sĩ Hội Thánh',
+            LE_NHO,
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 25),
+            'Thánh Phao-lô Tông đồ trở lại',
+            LE_NHO,
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 26),
+            'Thánh Ti-mô-thê và thánh Ti-tô, giám mục',
+            LE_NHO,
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 27),
+            'Thánh An-giê-la Mê-ri-si, trinh nữ',
+            LE_NHO,
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 28),
+            'Thánh Tô-ma A-qui-nô, linh mục, tiến sĩ Hội Thánh',
+            LE_NHO,
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 28),
+            tenChuaNhatThuongNienThu(4),
+            '',
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 1, 31),
+            'Thánh Gio-an Bốt-cô, linh mục',
+            LE_NHO,
+            false
+        );
+        // end January
+
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 6, 9),
