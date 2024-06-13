@@ -411,6 +411,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Mác-sê-li-nô và thánh Phê-rô, tử đạo',
         date: newDate(year, 6, 2),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -428,6 +429,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Nô-bec-tô, giám mục',
         date: newDate(year, 6, 6),
+        type: LE_NHO,
         fixed: true
       },
       {
@@ -462,6 +464,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Các thánh tử đạo tiên khởi của giáo đoàn Rô-ma',
         date: newDate(year, 6, 30),
+        type: LE_NHO,
         fixed: true
       },
       {

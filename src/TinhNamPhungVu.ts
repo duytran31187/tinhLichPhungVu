@@ -155,6 +155,8 @@ export class TinhNamPhungVu {
             'theAscentionOfTheLord', // Le Chua Len Troi
             'pentecostSunday', //: 'Lễ Chúa Thánh Thần hiện xuống'
             'leChuaBaNgoi', //: leChuaBaNgoi
+            'leMinhMauThanhChua',
+            'leThanhTamChuaGieSu'
         ];
         const LeKinh = [
             'leChuaChiuPhepRua'
