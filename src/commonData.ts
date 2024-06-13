@@ -447,6 +447,7 @@ export const danhSachNgayLeCoDinh =(year: number): NgayLeData[] => {
       {
         name: 'Thánh Rô-moan-đô, viện phụ',
         date: newDate(year, 6, 19),
+        type: LE_NHO,
         fixed: true
       },
       {
