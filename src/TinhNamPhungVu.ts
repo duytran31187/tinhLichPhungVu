@@ -151,7 +151,10 @@ export class TinhNamPhungVu {
     private populateCalculatedDaysToCalender(): void {
         const namphungVuIns = this.getNamPhungVu()!;
         const LeTrong = [
-            'theEpiphanyOfTheLord'
+            'theEpiphanyOfTheLord', // Le Chua Hien Linh
+            'theAscentionOfTheLord', // Le Chua Len Troi
+            'pentecostSunday', //: 'Lễ Chúa Thánh Thần hiện xuống'
+            'leChuaBaNgoi', //: leChuaBaNgoi
         ];
         const LeKinh = [
             'leChuaChiuPhepRua'
