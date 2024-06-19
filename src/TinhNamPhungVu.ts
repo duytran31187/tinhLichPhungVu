@@ -12,7 +12,7 @@ export class TinhNamPhungVu {
     private namPhungVu: NamPhungVu | undefined; // cac ngay le tinh theo cong thu
     private fullYear: SingleDateData[] = []; // full 365 ngay
     private firstSundayOfYear: Date | undefined = undefined; // CN tuan dau tien de tinh mua thuong nien
-
+    private printed = false;
 
     constructor(year: number) {
         this.year = +year; //make sure is number
@@ -294,7 +294,23 @@ export class TinhNamPhungVu {
         this.tinhchuaNhatMuaThuongNien();
         this.populateTuanBatNhat();
         this.populateTuanThanh();
+        this.printed = true;
         return this.fullYear;
+    }
+    public getLichPhungVuTheoThang(month: number) {
+        const fullMonth: SingleDateData[] = [];
+        month--; // as getMonth() return 0-11
+        if (!this.printed) {
+            this.getFullLichPhungVuTheoNam();
+        }
+        // console.log(this.fullYear);
+        for (let key in this.fullYear) {
+            if (this.fullYear[key].date.getMonth() == month)
+            {
+                fullMonth.push(this.fullYear[key]);   
+            }
+        }
+        return fullMonth;
     }
 
 }
