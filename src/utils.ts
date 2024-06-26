@@ -13,7 +13,19 @@ export function printDate(d: Date): string {
     return `${day}-${month}-${year}`;
 }
 export function newDate(year: number, month: number, day:number): Date {
-    const d = new Date(year + '-' + month + '-' + day);
+    let monthStr = '';
+    let dayStr = '';
+    if (month < 10) {
+        monthStr = '0' + month;
+    } else {
+        monthStr = month.toString();
+    };
+    if (day < 10) {
+        dayStr = '0' + day;
+    } else {
+        dayStr = day.toString();
+    };
+    const d = new Date(year + '-' + monthStr + '-' + dayStr);
     d.setHours(1);
     d.setMinutes(0);
     d.setSeconds(0);
