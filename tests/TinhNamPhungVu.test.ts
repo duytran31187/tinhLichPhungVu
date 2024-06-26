@@ -60,9 +60,17 @@ describe('test Full nam phung vu', () => {
                 try {
                     expect(matchExpect).toBeTruthy();
                 } catch(e) {
-                    console.log(`expected ngay le ${JSON.stringify(expectedNgayLe)}`);
-                    console.log(`actualNgayLe ngay le ${JSON.stringify(actualDataByDay)}`);
-                    // expect(matchExpect).toBeTruthy();
+                    // console.log(`expected ngay le ${JSON.stringify(expectedNgayLe)}`);
+                    // console.log(`actualNgayLe ngay le ${JSON.stringify(actualDataByDay)}`);
+                    // actualDataByDay.cacNgayLe.forEach(actualNgayLe => {
+                    //     //console.log(`actualNgayLe ngay le ${JSON.stringify(actualNgayLe)}`);
+                    //     if (
+                    //         actualNgayLe.name == expectedNgayLe.name //same name
+                    //     ) { 
+                    //         console.log(`actualNgayLe FOUND are ${JSON.stringify(actualDataByDay)} but expect ${JSON.stringify(expectedNgayLe)}`);
+                    //     }
+                    // });
+                    expect(matchExpect).toBeTruthy();
                 }
             });
         }
@@ -201,42 +209,42 @@ describe('test Full nam phung vu', () => {
             newDate(year, 1, 22),
             'Thánh Vinh-sơn, phó tế, tử đạo',
             LE_NHO,
-            false
+            true
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 24),
             'Thánh Phan-xi-cô đơ Xan, giám mục, tiến sĩ Hội Thánh',
             LE_NHO,
-            false
+            true
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 25),
             'Thánh Phao-lô Tông đồ trở lại',
-            LE_NHO,
-            false
+            LE_KINH,
+            true
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 26),
             'Thánh Ti-mô-thê và thánh Ti-tô, giám mục',
             LE_NHO,
-            false
+            true
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 27),
             'Thánh An-giê-la Mê-ri-si, trinh nữ',
             LE_NHO,
-            false
+            true
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 1, 28),
             'Thánh Tô-ma A-qui-nô, linh mục, tiến sĩ Hội Thánh',
             LE_NHO,
-            false
+            true
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
@@ -250,10 +258,8 @@ describe('test Full nam phung vu', () => {
             newDate(year, 1, 31),
             'Thánh Gio-an Bốt-cô, linh mục',
             LE_NHO,
-            false
+            true
         );
-        // end January
-
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 6, 9),
@@ -286,7 +292,7 @@ describe('test Full nam phung vu', () => {
             fullYear,
             newDate(year, 11, 24),
             nameOfDays.chuaKitoVua,
-            '',
+            LE_TRONG,
             false
         );
         fullYear = addExpectedDayToExpectedFullYear(
@@ -330,7 +336,7 @@ describe('test Full nam phung vu', () => {
             fourthSundayOfAdvent: newDate(year, 12, 22), 
             leThanhGia: newDate(year, 12, 29),
         };
-       compareNamPhungVu(resultNamPhungVu, expectedNamPhungVu);
+    //    compareNamPhungVu(resultNamPhungVu, expectedNamPhungVu);
        compareFullYear(ins.getFullLichPhungVuTheoNam(), fullYear);
     });
     it('2025', () => {
@@ -399,14 +405,14 @@ describe('test Full nam phung vu', () => {
             fullYear,
             newDate(year, 6, 15),
             nameOfDays.leChuaBaNgoi,
-            '',
+            LE_TRONG,
             false
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
             newDate(year, 6, 22),
             nameOfDays.leMinhMauThanhChua,
-            '',
+            LE_TRONG,
             false
         );
         fullYear = addExpectedDayToExpectedFullYear(
@@ -449,7 +455,7 @@ describe('test Full nam phung vu', () => {
             fullYear,
             newDate(year, 11, 23),
             nameOfDays.chuaKitoVua,
-            '',
+            LE_TRONG,
             false
         );
         

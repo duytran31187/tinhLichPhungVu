@@ -156,7 +156,8 @@ export class TinhNamPhungVu {
             'pentecostSunday', //: 'Lễ Chúa Thánh Thần hiện xuống'
             'leChuaBaNgoi', //: leChuaBaNgoi
             'leMinhMauThanhChua',
-            'leThanhTamChuaGieSu'
+            'leThanhTamChuaGieSu',
+            'chuaKitoVua'
         ];
         const LeKinh = [
             'leChuaChiuPhepRua',
