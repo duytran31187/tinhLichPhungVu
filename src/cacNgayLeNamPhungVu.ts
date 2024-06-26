@@ -44,7 +44,7 @@ export function tinhThuTuLeTro(ngayLePhucSinh: Date) {
 }
 export const tinhNgayPhucSinh = (year: number): Date | false => {// tim ngay chua nhat gan nhat SAU ngay ram
     const simpleDateParam: simpleDate = tinhngayramsau21thang3(year);
-    let closestSunday = new Date(simpleDateParam.year + '-' + simpleDateParam.month + '-' + simpleDateParam.day);
+    let closestSunday = newDate(simpleDateParam.year, simpleDateParam.month, simpleDateParam.day);
     const foundDate = timChuaNhatGanNhatTuNgay(closestSunday);
     if (foundDate instanceof Date) {
         return foundDate;
@@ -54,20 +54,20 @@ export const tinhNgayPhucSinh = (year: number): Date | false => {// tim ngay chu
 }
 export function tinhLeChuaHienLinh(y: number): Date {
     // Lễ Hiển Linh: vào ngày 6/1 - nhưng thường chuyển vào ngày CN gần ngày 6/1 nhất
-    const ngayLeHienLinh = new Date(y + '-01-06');
+    const ngayLeHienLinh = newDate(y, 1, 6);
     switch (ngayLeHienLinh.getDay()) {
         case 1:// t2
-            return new Date(y + '-01-05'); // -1
+            return newDate(y, 1, 5); // -1
         case 2:// t3
-            return new Date(y + '-01-04'); // -2
+            return newDate(y, 1, 4); // -2
         case 3:// t4
-            return new Date(y + '-01-03'); // -3
+            return newDate(y, 1, 3); // -3
         case 4:// t5
-            return new Date(y + '-01-02'); // +3 => base on rule 2022
+            return newDate(y, 1, 2); // +3 => base on rule 2022
         case 5:// t5
-            return new Date(y + '-01-8'); // +2
+            return newDate(y, 1, 8); // +2
         case 6:// t7
-            return new Date(y + '-01-7');  // +1  
+            return newDate(y, 1, 7);  // +1  
         default: // istanbul ignore next
             return ngayLeHienLinh; // chu nhat
     }
@@ -78,7 +78,7 @@ export function tinhLeThanhGia(y: number): Date {
     const christMas = getChristmasDay(y);
     let count = 1;
     let breakTheLoop = false;
-    let foundDate = new Date(y + '-12-30');
+    let foundDate = newDate(y,12,30);
     do {
         let octaveDay = addDate(christMas, count); // ngay thu 2 tuan bat nhat la 26, ngay 7: 1/1 => ignore
         if (octaveDay.getDay() == 0) {
@@ -95,8 +95,8 @@ export function tinhLeThanhGia(y: number): Date {
 export function tinhLeChuaChiuPhepRua(y: number): Date | false {
     // Lễ Chúa chịu phép rửa: thường vào ngày CN tiếp theo CN Hiển Linh, trừ trường hợp CN hiển Linh rơi vào 2 ngày 7/1 và 8/1 thì lễ Chúa Chịu Phép rửa chọn ngay ngày thứ 2 sau đó
     const leHienLinh = tinhLeChuaHienLinh(y);
-    const day7 = new Date(y + '-1-7');
-    const day8 = new Date(y + '-1-8');
+    const day7 = newDate(y, 1, 7);
+    const day8 = newDate(y, 1, 8);
     let ngayLe: any;
     if (leHienLinh.getTime() == day7.getTime()) {
         // chon ngay t2 ke tiep
