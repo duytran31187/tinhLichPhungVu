@@ -13,19 +13,9 @@ export function printDate(d: Date): string {
     return `${day}-${month}-${year}`;
 }
 export function newDate(year: number, month: number, day:number): Date {
-    let monthStr = '';
-    let dayStr = '';
-    if (month < 10) {
-        monthStr = '0' + month;
-    } else {
-        monthStr = month.toString();
-    };
-    if (day < 10) {
-        dayStr = '0' + day;
-    } else {
-        dayStr = day.toString();
-    };
-    const d = new Date(year + '-' + monthStr + '-' + dayStr);
+    month--; // Javascript counts months from 0 to 11
+    // if use string new Date('2025-03-25') => must follow exactly (dddd-mm-dd), unless it will throw error on mobile
+    const d = new Date(year, month, day);
     d.setHours(1);
     d.setMinutes(0);
     d.setSeconds(0);

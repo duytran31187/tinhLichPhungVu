@@ -57,10 +57,14 @@ describe('cloneDate', () => {
         expect(d2.toDateString()).toStrictEqual('Fri Dec 26 2025');
     });
 });
-describe('clonnewDateeDate', () => {
+describe('newDate', () => {
     it('new date', () => {
         const d1 = newDate(2025, 12, 25);
         expect(d1.toDateString()).toStrictEqual('Thu Dec 25 2025');
+        const d2 = newDate(2025, 2, 25);
+        expect(d2.toDateString()).toStrictEqual('Tue Feb 25 2025');
+        const d3 = newDate(2025, 1, 1);
+        expect(d3.toDateString()).toStrictEqual('Wed Jan 01 2025');
     });
 });
 describe('printDate', () => {
