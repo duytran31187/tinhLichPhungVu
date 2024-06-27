@@ -104,7 +104,7 @@ export class TinhNamPhungVu {
         );
         const leChuaChiuPhepRua = tinhLeChuaChiuPhepRua(this.year);
         if (!(leChuaChiuPhepRua instanceof Date)) { /* istanbul ignore next */
-            return false;
+            throw Error(`can't find LeChuaChiuPhepRua nam ${this.year}`);
         }
 
         this.namPhungVu = {
@@ -177,7 +177,7 @@ export class TinhNamPhungVu {
                         }
                         this.addNgayLeVoDanhSach(val, nameOfDate, loaiNgayLe, false);
                     } else { /* istanbul ignore next */
-                        throw new Error('khong the tim thay ten ngay le');
+                        throw new Error(`khong the tim thay ten ngay le cho ngay: ${key}`);
                     }
                 }
             }
@@ -235,12 +235,11 @@ export class TinhNamPhungVu {
         while (
             d.getTime() > namPhungVu.pentecostSunday.getTime() // tuan sau le chua thanh than hien xuong
             && d.getTime() < leKitoVua.getTime() // truoc le ki to vua
-        ) {// truoc le kia to vua
-            // console.log(`${d.toDateString()} la ${this.nameChuaNhaMuaThuongNienThu(muaThuongNienThu)}`);
+        ) {
             if(
                 d.toDateString() !== namPhungVu.leChuaBaNgoi.toDateString()
                 && d.toDateString() !== namPhungVu.leMinhMauThanhChua.toDateString()
-                &&  d.toDateString() !== newDate(this.year, 6,29).toDateString() // le thanh phao lo, phe ro 
+                &&  d.toDateString() !== newDate(this.year, 6,29).toDateString() // le Thanh phao lo, Phe ro 
             ) { 
                 this.addNgayLeVoDanhSach(
                     d,
@@ -298,20 +297,20 @@ export class TinhNamPhungVu {
         this.printed = true;
         return this.fullYear;
     }
-    public getLichPhungVuTheoThang(month: number) {
-        const fullMonth: SingleDateData[] = [];
-        month--; // as getMonth() return 0-11
-        if (!this.printed) {
-            this.getFullLichPhungVuTheoNam();
-        }
-        // console.log(this.fullYear);
-        for (let key in this.fullYear) {
-            if (this.fullYear[key].date.getMonth() == month)
-            {
-                fullMonth.push(this.fullYear[key]);   
-            }
-        }
-        return fullMonth;
-    }
+    // public getLichPhungVuTheoThang(month: number) {
+    //     const fullMonth: SingleDateData[] = [];
+    //     month--; // as getMonth() return 0-11
+    //     if (!this.printed) {
+    //         this.getFullLichPhungVuTheoNam();
+    //     }
+    //     // console.log(this.fullYear);
+    //     for (let key in this.fullYear) {
+    //         if (this.fullYear[key].date.getMonth() == month)
+    //         {
+    //             fullMonth.push(this.fullYear[key]);   
+    //         }
+    //     }
+    //     return fullMonth;
+    // }
 
 }

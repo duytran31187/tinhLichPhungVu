@@ -107,7 +107,7 @@ export function tinhLeChuaChiuPhepRua(y: number): Date | false {
     } else {
         ngayLe = timNgayTrongTuanSauNgay(leHienLinh, 0);
     }
-    if(ngayLe instanceof Date) {
+    if (ngayLe instanceof Date) {
         return ngayLe;
     } else { // istanbul ignore next
         return false;
