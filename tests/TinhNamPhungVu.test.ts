@@ -269,10 +269,10 @@ describe('test Full nam phung vu', () => {
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
-            newDate(year, 6, 16),
-            tenChuaNhatThuongNienThu(11),
-            '',
-            false
+            newDate(year, 8, 24),
+            'Thánh Bartolommeo tông đồ',
+            LE_KINH,
+            true
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
@@ -300,6 +300,13 @@ describe('test Full nam phung vu', () => {
             newDate(year, 11, 24),
             `Thánh An-rê Dũng Lạc và các bạn, tử đạo`,
             LE_NHO,
+            true
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 12, 8),
+            'Đức Mẹ Vô Nhiễm Nguyên Tội',
+            LE_TRONG,
             true
         );
 
@@ -336,7 +343,7 @@ describe('test Full nam phung vu', () => {
             fourthSundayOfAdvent: newDate(year, 12, 22), 
             leThanhGia: newDate(year, 12, 29),
         };
-    //    compareNamPhungVu(resultNamPhungVu, expectedNamPhungVu);
+       compareNamPhungVu(resultNamPhungVu, expectedNamPhungVu);
        compareFullYear(ins.getFullLichPhungVuTheoNam(), fullYear);
     });
     it('2025', () => {
