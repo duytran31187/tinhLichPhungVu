@@ -267,7 +267,7 @@ export class TinhNamPhungVu {
                 LE_TRONG,
                 false
             );
-        } while (batNhaThu < 8);
+        } while (batNhaThu < 7);
         
     }
     private populateTuanThanh() {
@@ -285,7 +285,7 @@ export class TinhNamPhungVu {
                 '',
                 false
             );
-        } while (thu < 8);
+        } while (thu < 7);
         
     }
     public getFullLichPhungVuTheoNam() {

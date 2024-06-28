@@ -8,6 +8,12 @@ const strNamLe = "Odd (Năm lẻ)";
 const keyForDate = (date: Date): number => {
     return buildKeyInNumberFromDate(date);
 }
+const stringNgayTrongTuanBatNhat = (n: number) => {
+    return `Thu ${n} trong Tuần Bát Nhật Lễ Phục Sinh`;
+}
+const stringNgayTrongTuanThanh = (n: number) => {
+    return `Thu ${n} Tuần Thánh`;
+}
 describe('init', () => {
     it('init with year is number', () => {
         const ins = new TinhNamPhungVu(2024);
@@ -41,8 +47,8 @@ describe('test Full nam phung vu', () => {
             } catch(e) {
                 console.log(`expected ngay le ${JSON.stringify(expectedDataByDay)}`);
                 console.log(`actualNgayLe ngay le ${JSON.stringify(actualDataByDay)}`);
-                break;
-                // expect(matchExpect).toBeTruthy();
+                // break;
+                // expect(false).toBeTruthy();
             }
             expectedDataByDay.cacNgayLe.forEach(expectedNgayLe => {
                 let matchExpect = false;
@@ -262,6 +268,111 @@ describe('test Full nam phung vu', () => {
         );
         fullYear = addExpectedDayToExpectedFullYear(
             fullYear,
+            newDate(year, 3, 25),
+            'Lễ Truyền Tin',
+            LE_TRONG,
+            true
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 3, 25),
+            stringNgayTrongTuanThanh(2),
+            '',
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 3, 26),
+            stringNgayTrongTuanThanh(3),
+            '',
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 3, 27),
+            stringNgayTrongTuanThanh(4),
+            '',
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 3, 28),
+            stringNgayTrongTuanThanh(5),
+            '',
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 3, 29),
+            stringNgayTrongTuanThanh(6),
+            '',
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 3, 30),
+            stringNgayTrongTuanThanh(7),
+            '',
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 3, 31),
+            nameOfDays.easterSunday,
+            '',
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 4, 1),
+            stringNgayTrongTuanBatNhat(2),
+            LE_TRONG,
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 4, 2),
+            stringNgayTrongTuanBatNhat(3),
+            LE_TRONG,
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 4, 3),
+            stringNgayTrongTuanBatNhat(4),
+            LE_TRONG,
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 4, 4),
+            stringNgayTrongTuanBatNhat(5),
+            LE_TRONG,
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 4, 5),
+            stringNgayTrongTuanBatNhat(6),
+            LE_TRONG,
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 4, 6),
+            stringNgayTrongTuanBatNhat(7),
+            LE_TRONG,
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 4, 7),
+            'Chúa nhật thứ 2 phục sinh',
+            '',
+            false
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
             newDate(year, 6, 9),
             tenChuaNhatThuongNienThu(10),
             '',
@@ -308,6 +419,13 @@ describe('test Full nam phung vu', () => {
             'Đức Mẹ Vô Nhiễm Nguyên Tội',
             LE_TRONG,
             true
+        );
+        fullYear = addExpectedDayToExpectedFullYear(
+            fullYear,
+            newDate(year, 12, 8),
+            'Chúa nhật thứ 2 mùa vọng',
+            '',
+            false
         );
 
         const expectedNamPhungVu = {
